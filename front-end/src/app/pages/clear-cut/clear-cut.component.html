@@ -1,1 +1,127 @@
-<p>clear-cut works!</p>
+<div class="clear-cut-page">
+  <!-- Main Content -->
+  <div class="debunk-list-container">
+    <header class="page-header">
+      <h1>Clear Cut</h1>
+      <p class="subtitle">Community-powered misinformation debunking</p>
+    </header>
+
+    <div class="debunks-grid">
+      @for (debunk of visibleDebunks(); track debunk.id) {
+        <div class="debunk-card fade-in">
+          <div class="debunk-header">
+            <h2>{{ debunk.title }}</h2>
+            <span class="debunk-date">{{ debunk.date | date:'mediumDate' }}</span>
+          </div>
+
+          <div class="debunk-content">
+            <div class="debunk-section">
+              <h3>Fake Article</h3>
+              <a [href]="debunk.fakeArticleUrl" target="_blank" rel="noopener noreferrer" class="article-link">
+                {{ debunk.fakeArticleUrl }}
+              </a>
+            </div>
+
+            <div class="debunk-section">
+              <h3>Why It's Fake</h3>
+              <ul class="reasons-list">
+                @for (reason of getLines(debunk.reasons); track $index) {
+                  <li>{{ reason }}</li>
+                }
+              </ul>
+            </div>
+
+            <div class="debunk-section">
+              <h3>Correct Information</h3>
+              <p>{{ debunk.correctInfo }}</p>
+            </div>
+
+            <div class="debunk-section">
+              <h3>Credible Sources</h3>
+              <ul class="sources-list">
+                @for (source of getLines(debunk.sources); track $index) {
+                  <li>
+                    <a [href]="source" target="_blank" rel="noopener noreferrer">{{ source }}</a>
+                  </li>
+                }
+              </ul>
+            </div>
+
+            @if (debunk.notes) {
+              <div class="debunk-section">
+                <h3>Additional Notes</h3>
+                <p>{{ debunk.notes }}</p>
+              </div>
+            }
+          </div>
+
+          <div class="debunk-actions">
+            <button class="report-btn" (click)="reportDebunk(debunk.id)">Report</button>
+            <button class="share-btn" (click)="copyDebunk(debunk)">Share</button>
+          </div>
+        </div>
+      }
+
+      @if (isLoading()) {
+        <div class="loading-indicator">
+          <div class="spinner"></div>
+          <p>Loading more debunks...</p>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Floating Action Button -->
+  <button class="fab" (click)="openModal()">
+    <span class="fab-icon">+</span>
+    <span class="fab-text">Debunk Article</span>
+  </button>
+
+  <!-- Submission Modal -->
+  @if (showModal()) {
+    <div class="modal-overlay" (click)="closeModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <button class="modal-close" (click)="closeModal()">&times;</button>
+
+        <h2 class="modal-title">Submit New Debunk</h2>
+
+        <form class="debunk-form" (submit)="submitDebunk()">
+          <div class="form-group">
+            <label>Title *</label>
+            <input type="text" [(ngModel)]="newDebunk().title" name="title" required>
+          </div>
+
+          <div class="form-group">
+            <label>Fake Article URL *</label>
+            <input type="url" [(ngModel)]="newDebunk().fakeArticleUrl" name="fakeArticleUrl" required>
+          </div>
+
+          <div class="form-group">
+            <label>Why it's fake * <small>(one reason per line)</small></label>
+            <textarea [(ngModel)]="newDebunk().reasons" name="reasons" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Correct Information *</label>
+            <textarea [(ngModel)]="newDebunk().correctInfo" name="correctInfo" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Credible Sources * <small>(one source per line)</small></label>
+            <textarea [(ngModel)]="newDebunk().sources" name="sources" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Additional Notes</label>
+            <textarea [(ngModel)]="newDebunk().notes" name="notes"></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="cancel-btn" (click)="closeModal()">Cancel</button>
+            <button type="submit" class="submit-btn">Submit Debunk</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  }
+</div>
