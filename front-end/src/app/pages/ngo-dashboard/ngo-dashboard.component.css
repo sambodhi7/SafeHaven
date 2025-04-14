@@ -6,7 +6,16 @@
   padding: 2rem;
 }
 
-.auth-card, .dashboard {
+.auth-card {
+  max-width: 400px;
+  margin: 0 auto;
+  background: #1e1e1e;
+  color: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.dashboard {
   max-width: 1200px;
   margin: 0 auto;
   background: #1e1e1e;
@@ -82,7 +91,9 @@ button {
 
 .btn-ghost {
   background: transparent;
-  color: #aaa;
+  /* background: red; */
+  border: 2px solid #ff5555;
+  color: #ff5555;
   padding: 0.5rem 1rem;
 }
 
@@ -99,6 +110,8 @@ button {
 .signup-form h3 {
   color: white;
   margin-bottom: 1.5rem;
+  width: fit-content;
+  justify-self: center;
 }
 
 .signup-form input {
@@ -111,8 +124,13 @@ button {
   color: white;
 }
 
+.signup-form input::placeholder {
+  color: #aaa;
+}
+
 .form-actions {
   display: flex;
+  justify-content: center;
   gap: 1rem;
   margin-top: 1rem;
 }

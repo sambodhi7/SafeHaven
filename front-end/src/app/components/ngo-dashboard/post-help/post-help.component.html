@@ -25,7 +25,7 @@
 
     <div class="form-group">
       <label>Capacity</label>
-      <input type="number" [(ngModel)]="capacity" placeholder="How many people can you help?">
+      <input type="number" [(ngModel)]="capacity" placeholder="How many people can you help?" min="1" value="1">
     </div>
 
     <button class="btn-primary" (click)="submitHelp()">Publish Help Offer</button>

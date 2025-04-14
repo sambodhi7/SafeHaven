@@ -24,8 +24,8 @@
           <input type="email" placeholder="Official Email">
           <input type="password" placeholder="Create Password">
           <div class="form-actions">
-            <button class="btn-secondary" (click)="showSignup.set(false)">Cancel</button>
             <button class="btn-primary">Submit</button>
+            <button class="btn-secondary" (click)="showSignup.set(false)" class="btn-outline">Cancel</button>
           </div>
         </div>
       }
@@ -64,7 +64,6 @@
 
       <div class="dashboard-footer">
         <button class="btn-ghost" (click)="logout()">
-          <span class="btn-icon">🚪</span>
           Sign Out
         </button>
       </div>
