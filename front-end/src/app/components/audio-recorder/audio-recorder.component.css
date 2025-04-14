@@ -4,7 +4,12 @@
         #4facfe 0%,
         #00f2fe 100%);
     &:hover{
-        background: #776baf;
+        background: linear-gradient(
+        90deg,
+        #51abf9 0%,
+        #04edf9 100%);
         cursor: pointer;
+        transform: scale(1.01);
+        transition: all ease-in;
     }
 }

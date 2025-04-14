@@ -1,0 +1,29 @@
+label{
+    margin-top: 1rem;
+    font-size: 1.2rem;
+}
+input, textarea{
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+form{
+    font-size: xx-large;
+}
+button{
+    
+    background: linear-gradient(
+        90deg,
+        #4facfe 0%,
+        #00f2fe 100%);
+    &:hover{
+        background: linear-gradient(
+        90deg,
+        #51abf9 0%,
+        #04edf9 100%);
+        cursor: pointer;
+        transform: scale(1.01);
+        transition: all ease-in;
+    }
+
+    
+}
