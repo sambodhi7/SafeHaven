@@ -36,5 +36,11 @@ export const routes: Routes = [
         loadComponent() {
             return import("./pages/where-names-rest/where-names-rest.component").then(c=>c.WhereNamesRestComponent)
         }
+    },
+    {
+        path:'add',
+        loadComponent() {
+            return import("./components/add-front-line-lens-form/add-front-line-lens-form.component").then(c=>c.AddFrontLineLensFormComponent)
+        },
     }
 ];

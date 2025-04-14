@@ -1,0 +1,7 @@
+.btn-main{
+    background: #7065a8;
+    &:hover{
+        background: #776baf;
+        cursor: pointer;
+    }
+}
