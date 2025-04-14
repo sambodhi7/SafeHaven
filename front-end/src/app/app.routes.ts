@@ -42,5 +42,11 @@ export const routes: Routes = [
         loadComponent() {
             return import("./components/add-front-line-lens-form/add-front-line-lens-form.component").then(c=>c.AddFrontLineLensFormComponent)
         },
+    },
+    {
+      path: 'ngo-dashboard',
+      loadComponent() {
+        return import('./pages/ngo-dashboard/ngo-dashboard.component').then(c => c.NgoDashboardComponent)
+      }
     }
 ];

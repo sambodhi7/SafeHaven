@@ -1,0 +1,148 @@
+.ngo-dashboard {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.auth-card, .dashboard {
+  margin: auto;
+  width: fit-content;
+  background: #1a1a1a;
+  color: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.auth-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.8rem;
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+p {
+  color: #aaa;
+  margin: 0 0 2rem 0;
+}
+
+.auth-actions, .dashboard-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);;
+  color: black;
+}
+
+.btn-primary:hover {
+  /* background: #0052cc; */
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: #333;
+  color: white;
+  border: 1px solid #444;
+}
+
+.btn-secondary:hover {
+  background: #444;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+  border: 1px solid #0066ff;
+}
+
+.btn-outline:hover {
+  /* background: rgba(0, 102, 255, 0.1); */
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #aaa;
+}
+
+.btn-ghost:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.stat-card {
+  background: #252525;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px dashed #444;
+  transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-card h3 {
+  font-size: 2rem;
+  margin: 0.5rem 0;
+  color: white;
+}
+
+.stat-icon {
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.auth-top{
+  width: fit-content;
+  margin: auto;
+}
+
+@media (max-width: 600px) {
+  .auth-card, .dashboard {
+    padding: 1.5rem;
+  }
+
+  .auth-actions, .dashboard-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}

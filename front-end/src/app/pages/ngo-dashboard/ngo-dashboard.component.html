@@ -1,0 +1,59 @@
+<div class="ngo-dashboard">
+  @if (!isLoggedIn()) {
+    <div class="auth-card">
+      <div class="auth-top">
+        <h2>NGO Portal Access</h2>
+        <p>Verify your organization to help those in need</p>
+      </div>
+
+      <div class="auth-actions">
+        <button class="btn-primary" routerLink="/ngo-login" (click)="login()">
+          <span class="btn-icon">🔑</span>
+          Log In
+        </button>
+        <button class="btn-outline" routerLink="/ngo-signup">
+          <span class="btn-icon">✍️</span>
+          Register
+        </button>
+      </div>
+    </div>
+  } @else {
+    <div class="dashboard">
+      <div class="dashboard-header">
+        <h2>
+          <span class="header-icon">🛡️</span>
+          Welcome, {{ ngoName() }}
+        </h2>
+        <p>Thank you for helping create safe havens</p>
+      </div>
+
+      <div class="dashboard-actions">
+        <button class="btn-primary" routerLink="/ngo/post-help">
+          <span class="btn-icon">➕</span>
+          Post New Relief Offering
+        </button>
+        <button class="btn-secondary" routerLink="/ngo/track">
+          <span class="btn-icon">📊</span>
+          Track Contributions
+        </button>
+        <button class="btn-ghost" (click)="logout()">
+          <span class="btn-icon">🚪</span>
+          Sign Out
+        </button>
+      </div>
+
+      <div class="dashboard-stats">
+        <div class="stat-card">
+          <span class="stat-icon">📦</span>
+          <h3>{{ aidPosted() }}</h3>
+          <p>Resources Shared</p>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">👥</span>
+          <h3>{{ peopleHelped() }}</h3>
+          <p>People Assisted</p>
+        </div>
+      </div>
+    </div>
+  }
+</div>

@@ -16,7 +16,7 @@ export class NavbarComponent {
     { label: 'Frontline Lens', path: '/frontline-lens' },
     { label: 'Voices of War', path: '/voices-of-war' },
     { label: 'Where Names Rest', path: '/where-names-rest' },
-    { label: 'Help', path: '/help' },
+    { label: 'NGO Dashboard', path: '/ngo-dashboard' },
     { label: 'Request Help', path: '/request' }
   ];
 

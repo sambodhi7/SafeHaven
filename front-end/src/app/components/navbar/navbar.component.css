@@ -109,7 +109,7 @@
   color: #fff;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1060px) {
   .hamburger {
     display: block;
   }
