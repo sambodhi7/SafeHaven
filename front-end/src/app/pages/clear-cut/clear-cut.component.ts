@@ -3,9 +3,12 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { NgxDotpatternComponent } from '@omnedia/ngx-dotpattern';
+import { NgxSpotlightComponent } from '@omnedia/ngx-spotlight';
+import { NgxGridpatternComponent } from '@omnedia/ngx-gridpattern';
+import {NgxBackgroundBeamsComponent} from "@omnedia/ngx-background-beams"
 
 interface Debunk {
-  id: number;
+  _id:string;
   title: string;
   fakeArticleUrl: string;
   reasons: string;
@@ -18,7 +21,7 @@ interface Debunk {
 @Component({
   selector: 'app-clear-cut',
   standalone: true,
-  imports: [CommonModule, FormsModule, NgxDotpatternComponent],
+  imports: [CommonModule, FormsModule,NgxSpotlightComponent,NgxBackgroundBeamsComponent, NgxDotpatternComponent, NgxGridpatternComponent],
   templateUrl: './clear-cut.component.html',
   styleUrls: ['./clear-cut.component.css']
 })
@@ -27,8 +30,9 @@ export class ClearCutComponent {
   isLoading = signal(false);
   debunks = signal<Debunk[]>([]);
   visibleDebunks = signal<Debunk[]>([]);
-  batchSize = 5;
-  currentBatch = 0;
+ 
+  offset = signal(0);
+
 
   newDebunk = signal<Partial<Debunk>>({
     title: '',
@@ -36,12 +40,13 @@ export class ClearCutComponent {
     reasons: '',
     correctInfo: '',
     sources: '',
-    notes: ''
+    notes: '',
+    _id : ''
   });
 
   constructor() {
     // Initialize with mock data
-    this.generateMockDebunks(10);
+   
     this.loadMoreDebunks();
 
     // Set up scroll listener for infinite loading
@@ -50,34 +55,43 @@ export class ClearCutComponent {
     }
   }
 
+  ngOnInit(): void {
+    fetch("http://127.0.0.1:5000/api/debunks",{
+        method : "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          },
+      body: JSON.stringify({offset: this.offset()} )
+      }).then(res=>res.json()).then(res=>{
+        if(res['success']){
+          console.log(res['debunks'])
+          this.debunks.set(res['debunks'])
+        }
+      })
+      
+    
+  }
+
   generateMockDebunks(count: number) {
     const mockDebunks: Debunk[] = [];
-    for (let i = 1; i <= count; i++) {
-      mockDebunks.push({
-        id: i,
-        title: `Misleading article about ${i % 2 === 0 ? 'casualty numbers' : 'military movements'}`,
-        fakeArticleUrl: `https://fakenews.example.com/article-${i}`,
-        reasons: `Reason 1: No credible sources cited\nReason 2: Photos are from different conflict\nReason 3: Numbers inflated by ${i * 50}%`,
-        correctInfo: `Official reports confirm the actual situation is different. Verified sources show...`,
-        sources: `https://trusted-source.com/real-info\nhttps://government.gov/updates\nhttps://un.org/conflict-data`,
-        notes: i % 3 === 0 ? 'This has been circulating on social media' : undefined,
-        date: new Date(Date.now() - i * 86400000) // Older dates for older items
-      });
-    }
-    this.debunks.set(mockDebunks);
+  
   }
 
   loadMoreDebunks() {
-    this.isLoading.set(true);
-    setTimeout(() => {
-      const start = this.currentBatch * this.batchSize;
-      const end = start + this.batchSize;
-      const newDebunks = this.debunks().slice(start, end);
-
-      this.visibleDebunks.update(debunks => [...debunks, ...newDebunks]);
-      this.currentBatch++;
-      this.isLoading.set(false);
-    }, 500); // Simulate network delay
+    // this.isLoading.set(true);
+    // fetch("http://127.0.0.1:5000/api/debunks",{
+    //   method : "POST",
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     },
+    // body: JSON.stringify({offset: this.offset()} )
+    // }).then(res=>res.json()).then(res=>{
+    //   if(res['success']){
+    //     console.log(res['debunks'])
+    //   }
+    // })
+    // this.isLoading.set(false);
+   
   }
 
   handleScroll() {
@@ -103,8 +117,8 @@ export class ClearCutComponent {
   }
 
   submitDebunk() {
-    const debunk: Debunk = {
-      id: Date.now(),
+    const newdebunk: Debunk = {
+      _id : "",
       title: this.newDebunk().title || 'Untitled Debunk',
       fakeArticleUrl: this.newDebunk().fakeArticleUrl || '',
       reasons: this.newDebunk().reasons || '',
@@ -115,13 +129,24 @@ export class ClearCutComponent {
     };
 
     // Add to beginning of array
-    this.debunks.update(debunks => [debunk, ...debunks]);
-    this.visibleDebunks.update(debunks => [debunk, ...debunks.slice(0, -1)]);
-
-    this.closeModal();
-
-    // Show confirmation
-    alert('Thank you for your submission! Your debunk has been added.');
+    fetch("http://127.0.0.1:5000/api/post/debunk",{
+      method : "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        },
+      body: JSON.stringify({debunk : newdebunk})
+    }).then(res=>res.json()).then(res=>{
+      if(res['success']){
+        this.debunks.update(debunks=>[newdebunk, ...debunks])
+        
+        alert('Thank you for your submission! Your debunk has been added.');
+        //this.closeModal();
+      }else{
+        alert("NOT DONE");
+      }
+    })
+   
+    
   }
 
   resetForm() {
@@ -135,7 +160,7 @@ export class ClearCutComponent {
     });
   }
 
-  reportDebunk(id: number) {
+  reportDebunk(id: string) {
     console.log(`Reported debunk ${id}`);
     alert('Thank you for reporting. Our team will review this submission.');
   }

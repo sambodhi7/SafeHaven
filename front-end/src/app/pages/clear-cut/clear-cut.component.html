@@ -1,81 +1,99 @@
 <div class="clear-cut-page">
   <!-- Main Content -->
-  <div class="debunk-list-container">
-    <header class="page-header">
-      <h1>Clear Cut</h1>
-      <p class="subtitle">Community-powered misinformation debunking</p>
-    </header>
 
-    <div class="debunks-grid">
-      @for (debunk of visibleDebunks(); track debunk.id) {
-        <div class="debunk-card fade-in">
-          <div class="debunk-header">
-            <h2>{{ debunk.title }}</h2>
-            <span class="debunk-date">{{ debunk.date | date:'mediumDate' }}</span>
-          </div>
+  <om-dotpattern>
+    <om-spotlight [animation]="true" styleClass="custom-spotlight">
+      <header class="content flex flex-col">
+          <h1>
+              Clear Cut
+          </h1>
+          <p class=" text-3xl">Putting the Spotlight on misinformation and fake news</p>
+        </header>
+  </om-spotlight>
+  </om-dotpattern>
+  <om-gridpattern [smallGrid]="false"  [gradientColor]="'rgba(0,0,0,0.1)'" >
+  
+  </om-gridpattern>
 
-          <div class="debunk-content">
-            <div class="debunk-section">
-              <h3>Fake Article</h3>
-              <a [href]="debunk.fakeArticleUrl" target="_blank" rel="noopener noreferrer" class="article-link">
-                {{ debunk.fakeArticleUrl }}
-              </a>
+  <om-background-beams [pathQuantity]="20">
+    <div class="debunk-list-container mt-8">
+
+      <div class="debunks-grid">
+        @for (debunk of debunks(); track debunk['_id']) {
+          <div class="debunk-card fade-in">
+            <div class="debunk-header">
+              <h2>{{ debunk.title }}</h2>
+              <span class="debunk-date">{{ debunk.date | date:'mediumDate' }}</span>
             </div>
-
-            <div class="debunk-section">
-              <h3>Why It's Fake</h3>
-              <ul class="reasons-list">
-                @for (reason of getLines(debunk.reasons); track $index) {
-                  <li>{{ reason }}</li>
-                }
-              </ul>
-            </div>
-
-            <div class="debunk-section">
-              <h3>Correct Information</h3>
-              <p>{{ debunk.correctInfo }}</p>
-            </div>
-
-            <div class="debunk-section">
-              <h3>Credible Sources</h3>
-              <ul class="sources-list">
-                @for (source of getLines(debunk.sources); track $index) {
-                  <li>
-                    <a [href]="source" target="_blank" rel="noopener noreferrer">{{ source }}</a>
-                  </li>
-                }
-              </ul>
-            </div>
-
-            @if (debunk.notes) {
+  
+            <div class="debunk-content">
               <div class="debunk-section">
-                <h3>Additional Notes</h3>
-                <p>{{ debunk.notes }}</p>
+                <h3>Fake Article</h3>
+                <a [href]="debunk.fakeArticleUrl" target="_blank" rel="noopener noreferrer" class="article-link">
+                  {{ debunk.fakeArticleUrl }}
+                </a>
               </div>
-            }
+  
+              <div class="debunk-section">
+                <h3>Why It's Fake</h3>
+                <ul class="reasons-list">
+                  @for (reason of getLines(debunk.reasons); track $index) {
+                    <li>{{ reason }}</li>
+                  }
+                </ul>
+              </div>
+  
+              <div class="debunk-section">
+                <h3>Correct Information</h3>
+                <p>{{ debunk.correctInfo }}</p>
+              </div>
+  
+              <div class="debunk-section">
+                <h3>Credible Sources</h3>
+                <ul class="sources-list">
+                  @for (source of getLines(debunk.sources); track $index) {
+                    <li>
+                      <a [href]="source" target="_blank" rel="noopener noreferrer">{{ source }}</a>
+                    </li>
+                  }
+                </ul>
+              </div>
+  
+              @if (debunk.notes) {
+                <div class="debunk-section">
+                  <h3>Additional Notes</h3>
+                  <p>{{ debunk.notes }}</p>
+                </div>
+              }
+            </div>
+  
+            <div class="debunk-actions">
+              <button class="report-btn" (click)="reportDebunk(debunk['_id'])">Report</button>
+              <button class="share-btn" (click)="copyDebunk(debunk)">Share</button>
+            </div>
           </div>
-
-          <div class="debunk-actions">
-            <button class="report-btn" (click)="reportDebunk(debunk.id)">Report</button>
-            <button class="share-btn" (click)="copyDebunk(debunk)">Share</button>
+        }
+  
+        @if (isLoading()) {
+          <div class="loading-indicator">
+            <div class="spinner"></div>
+            <p>Loading more debunks...</p>
           </div>
-        </div>
-      }
-
-      @if (isLoading()) {
-        <div class="loading-indicator">
-          <div class="spinner"></div>
-          <p>Loading more debunks...</p>
-        </div>
-      }
+        }
+      </div>
     </div>
-  </div>
-
-  <!-- Floating Action Button -->
-  <button class="fab" (click)="openModal()">
-    <span class="fab-icon">+</span>
-    <span class="fab-text">Debunk Article</span>
-  </button>
+  </om-background-beams>
+   
+  
+   
+  
+    <!-- Floating Action Button -->
+    <button class="fab" (click)="openModal()">
+      <span class="fab-icon">+</span>
+      <span class="fab-text">Debunk Article</span>
+    </button>
+ 
+  
 
   <!-- Submission Modal -->
   @if (showModal()) {

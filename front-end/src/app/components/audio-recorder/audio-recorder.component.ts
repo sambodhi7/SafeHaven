@@ -1,4 +1,4 @@
-import { Component,signal,Signal, } from '@angular/core';
+import { Component,signal,Signal,input, WritableSignal, model } from '@angular/core';
 import * as RecordRTC from 'recordrtc';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -15,7 +15,8 @@ export class AudioRecorderComponent {
   isPlaying= signal(false);
   audioBlobUrl = signal('');
   record : any;
- 
+  audioBlob= model()
+  
 
 
   constructor(private domSanitizer: DomSanitizer) {}
@@ -62,6 +63,7 @@ export class AudioRecorderComponent {
   }
   
   processRecording(blob:Blob){
+    this.audioBlob.set(blob)
     this.audioBlobUrl.set(URL.createObjectURL(blob))
     console.log(this.audioBlobUrl)
 
@@ -70,6 +72,7 @@ export class AudioRecorderComponent {
   deleteRecording(){
     this.isRecording.set(false);
     this.audioBlobUrl.set("");
+    this.audioBlob.set(null)
 
   }
 

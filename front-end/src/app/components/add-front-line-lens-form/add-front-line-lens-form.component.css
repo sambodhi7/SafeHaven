@@ -9,7 +9,7 @@ input, textarea{
 form{
     font-size: xx-large;
 }
-button{
+.btn-main{
     
     background: linear-gradient(
         90deg,

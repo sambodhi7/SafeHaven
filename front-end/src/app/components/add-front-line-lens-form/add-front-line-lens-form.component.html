@@ -1,31 +1,10 @@
 <div class="flex justify-center items-center">
+
   <div class="flex flex-col bg-gray-800 ml-5 mr-5 rounded-2xl shadow-2xl w-full lg:max-w-4xl md:max-w-3xl" style="text-align: center; padding: 2rem; ">
-    
+  
     <h1 class="text-5xl m-5">Report It!</h1>
 
-
-  <!-- 
-       @if (capturedImage) {
-          <div  style="margin-top: 2rem;">
-              <h3>Captured Image:</h3>
-              <img [src]="capturedImage?.imageAsDataUrl" [alt]="'Captured photo'" style="max-width: 100%; height: auto;" />
-              <button (click)="reset()">Reset</button>
-          </div>
-          
-      }
-      @else {
-          <webcam 
-        [trigger]="triggerObservable" 
-        (imageCapture)="handleImage($event)">
-      </webcam>
-  
-      <button (click)="triggerSnapshot()" style="margin-top: 1rem;">
-        📸 Capture Photo
-      </button>
-      } 
-     
-        -->
-     
+   
         
         <div class="flex flex-col items-center justify-center">
         @if(!capturedImage){
@@ -58,13 +37,13 @@
           <input type="text" formControlName="title"  id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Title goes here" required />
         
         <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your message</label>
-        <textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Leave a comment..."></textarea>
+        <textarea id="message" formControlName="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Leave Your message..."></textarea>
       
   
       </form>
   
   
-      <app-audio-recorder></app-audio-recorder>
+      <app-audio-recorder [(audioBlob)]="audioBlob"></app-audio-recorder>
       
 
       
@@ -73,6 +52,9 @@
         <app-googlemap  [lat]="lat()" [lng]="lng()" ></app-googlemap>
       }
       
+      <button class="btn-main p-5 mt-5 mb-5 text-2xl rounded-xl text-blue-950 font-bold" (click)="submit()">Submit </button>
+
+      {{audioBlob()}}
   
   </div>
 </div>

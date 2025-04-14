@@ -29,7 +29,7 @@
 - CrayonVoices :  War Stories Told by Children. Even though children cant write essays and blogs about their experiences and trauma  their voice still matters , this feature allows them to express them selves in form of drawings and paintings
 
 
-## Echos from the past 
+## Echos of Silence
 -  Preserving the unheard goodbyes, hopes, and prayers of victims.
 - Allows people to record their last messages in from of text , audio or images to their loved ones in case they dont survive the war 
 - Users can make their last messages and if after 10 days they dont delete it it would show up in the list of last messages where other people can see their message to the world and how they felt in the end

@@ -18,4 +18,42 @@ app.secret_key = os.environ.get("SECRET_KEY")
 app.config['SESSION_PERMANENT'] = True
 app.permanent_session_lifetime = timedelta(days=30)
 
-print(os.environ.get('SECRET_KEY'))
+
+@app.route("/api/post/front-line-lens", methods=['POST'])
+@cross_origin()
+def postFrontLine():
+    print(request.form['title'])
+    return "hello"
+
+@app.route("/api/debunks", methods=["POST"])
+@cross_origin()
+def get_debunks():
+    offset = request.json['offset']
+    res = mongoManager.get_debunks(offset=offset)
+    return {
+        'success' : True,
+        'debunks' : res
+    }
+
+@app.route("/api/post/debunk", methods=['POST'])
+@cross_origin()
+def post_debunk():
+    debunk = request.json['debunk']
+    debunk.pop('_id')
+    debunk.pop('date')
+    try:
+        mongoManager.add_dbunk(**debunk)
+        return {
+            "success" : True,
+        }
+    except Exception as e:
+        print(e)
+        return {
+            "success" : False,
+
+        }
+
+
+app.run(
+    debug=True
+)

@@ -2,7 +2,7 @@ import { NgModule , signal} from '@angular/core';
 import { Component , } from '@angular/core';
 import {WebcamModule, WebcamImage} from "ngx-webcam"
 import { AudioRecorderComponent } from '../audio-recorder/audio-recorder.component';
-import { Observable, Subject , take} from 'rxjs';
+import { Observable, Subject , take, zip} from 'rxjs';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HlmInputDirective } from '@spartan-ng/ui-input-helm';
@@ -14,7 +14,7 @@ import { HlmLabelDirective } from '@spartan-ng/ui-label-helm';
 
 @Component({
   selector: 'app-add-front-line-lens-form',
-  imports: [WebcamModule, AudioRecorderComponent,ReactiveFormsModule,HlmInputDirective,HlmLabelDirective, GooglemapComponent],
+  imports: [ WebcamModule, AudioRecorderComponent,ReactiveFormsModule,HlmInputDirective,HlmLabelDirective, GooglemapComponent],
   templateUrl: './add-front-line-lens-form.component.html',
   styleUrl: './add-front-line-lens-form.component.css'
 })
@@ -23,6 +23,8 @@ export class AddFrontLineLensFormComponent {
   capturedImage: WebcamImage | null = null;
   lat  = signal(0);
   lng = signal(0);
+  audioBlob = signal(null);
+
   
   form : FormGroup ;
 
@@ -73,4 +75,44 @@ export class AddFrontLineLensFormComponent {
     if(this.capturedImage)this.reset()
     else this.takePicture()
   }
+
+  submit(){
+    if(this.form.valid && this.capturedImage){
+    
+      let formdata = new FormData()
+      formdata.append(
+        'title', this.form.get('title')!.value
+      )
+      formdata.append(
+        'message', this.form.get('message')!.value
+      )
+      formdata.append('image', this.dataURItoBlob(this.capturedImage?.imageAsDataUrl), 'image.jpeg')
+      if(this.audioBlob()!=null){
+        formdata.append('audio', this.audioBlob()!, 'audio.wav')
+      }
+
+      console.log(formdata)
+      fetch("http://127.0.0.1:5000/api/post/front-line-lens", {method:'POST',
+        body: formdata
+      })
+
+    }
+    else{
+      alert("Invalid form")
+    }
+  }
+
+  dataURItoBlob(dataURI:string) {
+    console.log(dataURI)
+    const base64Data = dataURI.split(',')[1];
+    const byteString = atob(base64Data);
+    const arrayBuffer = new ArrayBuffer(byteString.length);
+    const int8Array = new Uint8Array(arrayBuffer);
+    for (let i = 0; i < byteString.length; i++) {
+      int8Array[i] = byteString.charCodeAt(i);
+    }
+    const blob = new Blob([int8Array], { type: 'image/jpeg' });
+   return blob;
+  }
+
 }
