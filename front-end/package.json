@@ -10,7 +10,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/cdk": "^18.0.0",
+    "@angular/cdk": "^19.2.9",
     "@angular/common": "^19.2.0",
     "@angular/compiler": "^19.2.0",
     "@angular/core": "^19.2.0",
@@ -23,6 +23,7 @@
     "@omnedia/ngx-flickering-grid": "^2.1.0",
     "@omnedia/ngx-gridpattern": "^2.0.0",
     "@omnedia/ngx-neon-underline": "^2.0.0",
+    "@omnedia/ngx-retro-grid": "^2.0.0",
     "@omnedia/ngx-word-morph": "^2.0.0",
     "@spartan-ng/brain": "0.0.1-alpha.439",
     "@tailwindcss/postcss": "^4.1.3",

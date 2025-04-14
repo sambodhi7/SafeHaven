@@ -1,5 +1,8 @@
 .btn-main{
-    background: #7065a8;
+    background: linear-gradient(
+        90deg,
+        #4facfe 0%,
+        #00f2fe 100%);
     &:hover{
         background: #776baf;
         cursor: pointer;
