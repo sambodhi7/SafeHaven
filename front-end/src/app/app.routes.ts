@@ -54,5 +54,17 @@ export const routes: Routes = [
       loadComponent() {
         return import('./pages/avail-help/avail-help.component').then(c => c.AvailHelpComponent)
       }
+    },
+    {
+      path: 'request',
+      loadComponent() {
+        return import('./pages/request-help/request-help.component').then(c => c.RequestHelpComponent)
+      }
+    },
+    {
+      path: 'donate',
+      loadComponent() {
+        return import('./pages/donate/donate.component').then(c => c.DonateComponent)
+      }
     }
 ];

@@ -18,7 +18,8 @@ export class NavbarComponent {
     { label: 'Where Names Rest', path: '/where-names-rest' },
     { label: 'NGO Dashboard', path: '/ngo-dashboard' },
     { label: 'Request Help', path: '/request' },
-    { label: 'Avail Help', path: '/avail-help' }
+    { label: 'Avail Help', path: '/avail-help' },
+    { label: 'Donate', path: '/donate' }
   ];
 
   isMobileMenuOpen = false;
