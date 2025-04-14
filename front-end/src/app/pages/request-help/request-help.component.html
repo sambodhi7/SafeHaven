@@ -1,0 +1,126 @@
+<div class="request-help-container">
+  <header class="page-header">
+    <h1>Request Help</h1>
+    <p class="subtitle">Fill out this form to request assistance from NGOs</p>
+  </header>
+
+  <!-- Success Message -->
+  @if (showSuccess()) {
+    <div class="success-message">
+      <div class="success-content">
+        <span class="icon">✅</span>
+        <div>
+          <h3>Request Submitted Successfully!</h3>
+          <p>The NGO will contact you soon. Stay safe.</p>
+        </div>
+      </div>
+    </div>
+  }
+
+  <!-- Request Form -->
+  <form class="request-form" (ngSubmit)="submitRequest()" #form="ngForm">
+    <div class="form-group">
+      <label for="ngo">Select NGO</label>
+      <select
+        id="ngo"
+        [(ngModel)]="requestForm.ngo"
+        name="ngo"
+        required>
+        <option value="" disabled selected>Choose an NGO...</option>
+        @for (ngo of ngos(); track ngo.id) {
+          <option [value]="ngo.name">{{ ngo.name }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="helpType">Type of Help Needed</label>
+      <select
+        id="helpType"
+        [(ngModel)]="requestForm.helpType"
+        name="helpType"
+        required>
+        <option value="" disabled selected>Select help type...</option>
+        @for (type of helpTypes(); track type) {
+          <option [value]="type">{{ type }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="name">Your Full Name</label>
+        <input
+          type="text"
+          id="name"
+          [(ngModel)]="requestForm.name"
+          name="name"
+          placeholder="Enter your name"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="contact">Contact Information</label>
+        <input
+          type="text"
+          id="contact"
+          [(ngModel)]="requestForm.contact"
+          name="contact"
+          placeholder="Phone number or email"
+          required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="message">Additional Information</label>
+      <textarea
+        id="message"
+        [(ngModel)]="requestForm.message"
+        name="message"
+        placeholder="Describe your situation and specific needs..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="location">Your Location</label>
+      <div class="location-input">
+        <input
+          type="text"
+          id="location"
+          [(ngModel)]="requestForm.location"
+          name="location"
+          placeholder="Your current location"
+          readonly>
+        <button
+          type="button"
+          class="detect-btn"
+          (click)="detectLocation()">
+          Detect My Location
+        </button>
+      </div>
+      <p class="location-hint">We'll use this to help NGOs find you</p>
+    </div>
+
+    <div class="form-group checkbox-group">
+      <input
+        type="checkbox"
+        id="urgent"
+        [(ngModel)]="requestForm.urgent"
+        name="urgent">
+      <label for="urgent">This is an urgent request</label>
+    </div>
+
+    <div class="form-actions">
+      <button
+        type="submit"
+        class="submit-btn"
+        [disabled]="isSubmitting() || !form.valid">
+        @if (isSubmitting()) {
+          <span class="spinner"></span>
+          Submitting...
+        } @else {
+          Submit Request
+        }
+      </button>
+    </div>
+  </form>
+</div>
