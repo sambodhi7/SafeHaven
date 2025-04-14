@@ -19,6 +19,10 @@
 /front-end/node_modules/*
 ./front-end/node_modules/*
 
+/static/images
+/static/audios
+
+
 # IDEs and editors
 /front-end/.idea/
 /front-end/.project

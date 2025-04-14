@@ -9,3 +9,22 @@
     </div>
 </om-flickering-grid>
 
+<div class="felx flex-col">
+    @for (frontline of frontLines(); track frontline['_id']) {
+    
+        <div class="flex flex-col items-center justify-center bg-gray-800">
+            <img [src]="frontline['image']" />
+
+            <h1 class="text-2xl" >{{frontline['title']}}</h1>
+            <h2>{{frontline['postedOn']}}</h2>
+            <h2>Message : </h2>
+            <p class="text-xl">{{frontline['message']}}</p>
+            @if(frontline['audioPresent']){
+                <audio [src]="frontline['audio']" controls></audio>
+            }
+            <app-googlemap [lat]="frontline['lat']" [lng]="frontline['long']" ></app-googlemap>
+            
+        </div>
+      }
+    
+</div>

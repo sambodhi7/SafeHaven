@@ -34,7 +34,7 @@ export class AddFrontLineLensFormComponent {
       message: [''],
     })
     this.form.valueChanges.subscribe(
-       value=>console.log(value)
+      
     )
   }
  
@@ -86,16 +86,25 @@ export class AddFrontLineLensFormComponent {
       formdata.append(
         'message', this.form.get('message')!.value
       )
+      formdata.append(
+        'lat', `${this.lat()}`,
+      )
+      formdata.append(
+        'lng', `${this.lng()}`,
+      )
       formdata.append('image', this.dataURItoBlob(this.capturedImage?.imageAsDataUrl), 'image.jpeg')
       if(this.audioBlob()!=null){
+        formdata.append("audioPresent", "true")
         formdata.append('audio', this.audioBlob()!, 'audio.wav')
+      }else{
+        formdata.append("audioPresent", "false")
       }
 
-      console.log(formdata)
+      console.log(this.audioBlob())
       fetch("http://127.0.0.1:5000/api/post/front-line-lens", {method:'POST',
         body: formdata
       })
-
+      
     }
     else{
       alert("Invalid form")
@@ -103,7 +112,7 @@ export class AddFrontLineLensFormComponent {
   }
 
   dataURItoBlob(dataURI:string) {
-    console.log(dataURI)
+   
     const base64Data = dataURI.split(',')[1];
     const byteString = atob(base64Data);
     const arrayBuffer = new ArrayBuffer(byteString.length);

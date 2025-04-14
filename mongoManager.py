@@ -10,7 +10,7 @@ class MongoManager:
         self.client = mongo.MongoClient(CONNECTION_URL)
         self.db = self.client['SafeHaven']
         self.debunks = self.db['Debunks']
-        self.frontline = self.db['Frontline']
+        self.frontlines = self.db['Frontlines']
 
     def add_dbunk(self, title, fakeArticleUrl, reasons, correctInfo, sources, notes="" ):
         new_debunk = {
@@ -36,7 +36,21 @@ class MongoManager:
         
         return (res)
     def add_frontline(self,fontline):
-        pass
+        res= self.frontlines.insert_one(
+            {**fontline,
+            "postedOn":datetime.now()}
+        )
+        return res.inserted_id
+    
+    def get_frontlines(self):
+        curr = self.frontlines.find({}).sort({"postedOn":-1})
+        res= []
+        for r in curr:
+            r['_id'] = str(r['_id'])
+            r['lat'] = float(r['lat'])
+            r['long'] = float(r['long'])
+            res.append(r)
+        return res
 
 if __name__ == '__main__':
     m = MongoManager()
