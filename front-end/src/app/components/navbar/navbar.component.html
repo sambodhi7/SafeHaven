@@ -1,13 +1,8 @@
 <nav class="navbar">
   <div class="navbar-brand">SafeHaven</div>
   <ul class="navbar-nav">
-    <li><a routerLink="/">Home</a></li>
-    <li><a routerLink="/clear-cut">Clear Cut</a></li>
-    <li><a routerLink="/echoes-of-silence">Echoes of Silence</a></li>
-    <li><a routerLink="/frontline-lens">Frontline Lens</a></li>
-    <li><a routerLink="/voices-of-war">Voices of War</a></li>
-    <li><a routerLink="/where-names-rest">Where Names Rest</a></li>
-    <li><a routerLink="/help">Help</a></li>
-    <li><a routerLink="/request">Request Help</a></li>
+    @for (link of navLinks; track link.label) {
+      <li><a [routerLink]="link.path">{{ link.label }}</a></li>
+    }
   </ul>
 </nav>
