@@ -1,0 +1,91 @@
+.post-help {
+  padding: 1rem;
+}
+
+h3 {
+  color: white;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.help-form {
+  background: #252525;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #aaa;
+}
+
+select, input, textarea {
+  width: 100%;
+  padding: 0.75rem;
+  background: #2a2a2a;
+  border: 1px solid #333;
+  border-radius: 6px;
+  color: white;
+}
+
+textarea {
+  min-height: 100px;
+}
+
+.active-posts h4 {
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.post-card {
+  background: #252525;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  border: 1px solid #333;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.post-type {
+  color: #4facfe;
+  font-weight: 500;
+}
+
+.post-date {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.post-locations {
+  color: #aaa;
+  margin-bottom: 0.5rem;
+}
+
+.post-description {
+  margin-bottom: 1rem;
+}
+
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .help-form {
+    padding: 1rem;
+  }
+}

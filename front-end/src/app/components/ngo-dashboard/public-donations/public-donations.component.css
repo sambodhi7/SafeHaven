@@ -1,0 +1,130 @@
+.public-donations {
+  padding: 1rem;
+}
+
+h3 {
+  color: white;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.campaign-form {
+  background: #252525;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.campaign-form h4 {
+  color: white;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #aaa;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 0.75rem;
+  background: #2a2a2a;
+  border: 1px solid #333;
+  border-radius: 6px;
+  color: white;
+}
+
+textarea {
+  min-height: 100px;
+}
+
+.active-campaigns h4 {
+  color: white;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.campaign-card {
+  background: #252525;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  border: 1px solid #333;
+}
+
+.campaign-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.campaign-header h5 {
+  margin: 0;
+  color: white;
+  font-size: 1.1rem;
+}
+
+.campaign-status {
+  background: #4facfe;
+  color: #121212;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.campaign-target {
+  color: #aaa;
+  margin-bottom: 0.5rem;
+}
+
+.campaign-description {
+  margin-bottom: 1rem;
+}
+
+.campaign-progress {
+  height: 24px;
+  background: #2a2a2a;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8px;
+  font-size: 0.8rem;
+  color: #121212;
+  font-weight: bold;
+}
+
+.campaign-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .campaign-form {
+    padding: 1rem;
+  }
+
+  .campaign-footer {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+}

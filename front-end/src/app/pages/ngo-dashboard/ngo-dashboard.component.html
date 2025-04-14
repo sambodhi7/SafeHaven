@@ -7,15 +7,28 @@
       </div>
 
       <div class="auth-actions">
-        <button class="btn-primary" routerLink="/ngo-login" (click)="login()">
+        <button class="btn-primary" (click)="login()">
           <span class="btn-icon">🔑</span>
           Log In
         </button>
-        <button class="btn-outline" routerLink="/ngo-signup">
+        <button class="btn-outline" (click)="showSignup.set(true)">
           <span class="btn-icon">✍️</span>
           Register
         </button>
       </div>
+
+      @if (showSignup()) {
+        <div class="signup-form">
+          <h3>NGO Registration</h3>
+          <input type="text" placeholder="Organization Name">
+          <input type="email" placeholder="Official Email">
+          <input type="password" placeholder="Create Password">
+          <div class="form-actions">
+            <button class="btn-secondary" (click)="showSignup.set(false)">Cancel</button>
+            <button class="btn-primary">Submit</button>
+          </div>
+        </div>
+      }
     </div>
   } @else {
     <div class="dashboard">
@@ -27,32 +40,33 @@
         <p>Thank you for helping create safe havens</p>
       </div>
 
-      <div class="dashboard-actions">
-        <button class="btn-primary" routerLink="/ngo/post-help">
-          <span class="btn-icon">➕</span>
-          Post New Relief Offering
-        </button>
-        <button class="btn-secondary" routerLink="/ngo/track">
-          <span class="btn-icon">📊</span>
-          Track Contributions
-        </button>
+      <div class="dashboard-nav">
+        @for (tab of tabs; track tab.id) {
+          <button class="nav-btn" [class.active]="activeTab() === tab.id" (click)="activeTab.set(tab.id)">
+            {{ tab.label }}
+          </button>
+        }
+      </div>
+
+      <div class="dashboard-content">
+        @switch (activeTab()) {
+          @case ('post-help') { <app-post-help /> }
+          @case ('requests') { <app-refugee-requests /> }
+          @case ('donations') { <app-public-donations /> }
+        }
+      </div>
+
+      <div class="dashboard-stats">
+        @for (stat of stats(); track stat.id) {
+          <app-stats-cards [icon]="stat.icon" [value]="stat.value" [label]="stat.label" />
+        }
+      </div>
+
+      <div class="dashboard-footer">
         <button class="btn-ghost" (click)="logout()">
           <span class="btn-icon">🚪</span>
           Sign Out
         </button>
-      </div>
-
-      <div class="dashboard-stats">
-        <div class="stat-card">
-          <span class="stat-icon">📦</span>
-          <h3>{{ aidPosted() }}</h3>
-          <p>Resources Shared</p>
-        </div>
-        <div class="stat-card">
-          <span class="stat-icon">👥</span>
-          <h3>{{ peopleHelped() }}</h3>
-          <p>People Assisted</p>
-        </div>
       </div>
     </div>
   }

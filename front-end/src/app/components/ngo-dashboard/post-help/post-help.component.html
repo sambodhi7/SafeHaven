@@ -1,1 +1,51 @@
-<p>post-help works!</p>
+<div class="post-help">
+  <h3>Create New Help Offering</h3>
+
+  <div class="help-form">
+    <div class="form-group">
+      <label>Type of Help</label>
+      <select [(ngModel)]="helpType">
+        <option value="food">Food</option>
+        <option value="shelter">Shelter</option>
+        <option value="medical">Medical</option>
+        <option value="clothing">Clothing</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Locations</label>
+      <input type="text" [(ngModel)]="locations" placeholder="City, Country (separate multiple with commas)">
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <textarea [(ngModel)]="description" placeholder="Describe the help you're offering"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Capacity</label>
+      <input type="number" [(ngModel)]="capacity" placeholder="How many people can you help?">
+    </div>
+
+    <button class="btn-primary" (click)="submitHelp()">Publish Help Offer</button>
+  </div>
+
+  <div class="active-posts">
+    <h4>Your Active Help Posts</h4>
+    @for (post of activePosts(); track post.id) {
+      <div class="post-card">
+        <div class="post-header">
+          <span class="post-type">{{ post.type | titlecase }}</span>
+          <span class="post-date">{{ post.date | date }}</span>
+        </div>
+        <p class="post-locations">📍 {{ post.locations }}</p>
+        <p class="post-description">{{ post.description }}</p>
+        <div class="post-footer">
+          <span>Capacity: {{ post.capacity }} people</span>
+          <button class="btn-ghost" (click)="removePost(post.id)">Remove</button>
+        </div>
+      </div>
+    }
+  </div>
+</div>

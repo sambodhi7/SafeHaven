@@ -1,1 +1,46 @@
-<p>public-donations works!</p>
+<div class="public-donations">
+  <h3>Donation Campaigns</h3>
+
+  <div class="campaign-form">
+    <h4>Create New Campaign</h4>
+    <div class="form-group">
+      <label>Campaign Title</label>
+      <input type="text" [(ngModel)]="campaignTitle" placeholder="e.g. Winter Clothes Drive">
+    </div>
+
+    <div class="form-group">
+      <label>Target Amount/Items</label>
+      <input type="text" [(ngModel)]="campaignTarget" placeholder="e.g. $5000 or 200 blankets">
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <textarea [(ngModel)]="campaignDescription" placeholder="Explain what donations are needed"></textarea>
+    </div>
+
+    <button class="btn-primary" (click)="createCampaign()">Launch Campaign</button>
+  </div>
+
+  <div class="active-campaigns">
+    <h4>Active Campaigns</h4>
+    @for (campaign of campaigns(); track campaign.id) {
+      <div class="campaign-card">
+        <div class="campaign-header">
+          <h5>{{ campaign.title }}</h5>
+          <span class="campaign-status">Active</span>
+        </div>
+        <p class="campaign-target">🎯 Target: {{ campaign.target }}</p>
+        <p class="campaign-description">{{ campaign.description }}</p>
+        <div class="campaign-progress">
+          <div class="progress-bar" [style.width.%]="(campaign.current / campaign.targetValue * 100)">
+            <span>{{ (campaign.current / campaign.targetValue * 100) | number:'1.0-0' }}%</span>
+          </div>
+        </div>
+        <div class="campaign-footer">
+          <span>Raised: {{ campaign.current }} of {{ campaign.targetValue }}</span>
+          <button class="btn-secondary">Share</button>
+        </div>
+      </div>
+    }
+  </div>
+</div>

@@ -1,1 +1,40 @@
-<p>refugee-requests works!</p>
+<div class="refugee-requests">
+  <h3>Refugee Requests</h3>
+
+  <div class="filters">
+    <div class="filter-group">
+      <label>Filter by Type</label>
+      <select [(ngModel)]="filterType">
+        <option value="all">All Types</option>
+        <option value="food">Food</option>
+        <option value="shelter">Shelter</option>
+        <option value="medical">Medical</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label>Filter by Location</label>
+      <input type="text" [(ngModel)]="filterLocation" placeholder="Enter location">
+    </div>
+  </div>
+
+  <div class="requests-list">
+    @for (request of filteredRequests(); track request.id) {
+      <div class="request-card" [class.urgent]="request.urgent">
+        <div class="request-header">
+          <span class="request-type">{{ request.type | titlecase }}</span>
+          @if (request.urgent) {
+            <span class="urgent-badge">Urgent</span>
+          }
+        </div>
+        <p class="request-location">📍 {{ request.location }}</p>
+        <p class="request-description">{{ request.description }}</p>
+        <div class="request-footer">
+          <span>👨‍👩‍👧‍👦 {{ request.people }} people</span>
+          <span>📅 {{ request.date | date }}</span>
+          <button class="btn-primary" (click)="markAsHelped(request.id)">Mark as Helped</button>
+        </div>
+      </div>
+    }
+  </div>
+</div>

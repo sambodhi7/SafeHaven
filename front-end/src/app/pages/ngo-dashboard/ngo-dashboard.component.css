@@ -1,53 +1,54 @@
 .ngo-dashboard {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 1rem;
+  min-height: 100vh;
+  background: #121212;
+  color: white;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 2rem;
 }
 
 .auth-card, .dashboard {
-  margin: auto;
-  width: fit-content;
-  background: #1a1a1a;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #1e1e1e;
   color: white;
-  padding: 2.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 3rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.auth-icon {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
+.auth-top {
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 h2 {
   margin: 0 0 0.5rem 0;
-  font-size: 1.8rem;
+  font-size: 2rem;
   background: linear-gradient(90deg, #4facfe, #00f2fe);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 0.75rem;
 }
 
 p {
   color: #aaa;
   margin: 0 0 2rem 0;
+  font-size: 1.1rem;
 }
 
-.auth-actions, .dashboard-actions {
+.auth-actions {
   display: flex;
   gap: 1rem;
   justify-content: center;
-  flex-wrap: wrap;
+  margin-top: 2rem;
 }
 
 button {
   padding: 0.75rem 1.5rem;
-  border-radius: 6px;
+  border-radius: 8px;
   font-weight: 500;
   display: inline-flex;
   align-items: center;
@@ -55,94 +56,148 @@ button {
   cursor: pointer;
   transition: all 0.2s ease;
   border: none;
+  font-size: 1rem;
 }
 
 .btn-primary {
-  background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);;
-  color: black;
+  background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+  color: #121212;
 }
 
 .btn-primary:hover {
-  /* background: #0052cc; */
   transform: translateY(-2px);
-}
-
-.btn-secondary {
-  background: #333;
-  color: white;
-  border: 1px solid #444;
-}
-
-.btn-secondary:hover {
-  background: #444;
-  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .btn-outline {
   background: transparent;
-  color: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
-  border: 1px solid #0066ff;
+  color: #4facfe;
+  border: 1px solid #4facfe;
 }
 
 .btn-outline:hover {
-  /* background: rgba(0, 102, 255, 0.1); */
+  background: rgba(79, 172, 254, 0.1);
   transform: translateY(-2px);
 }
 
 .btn-ghost {
   background: transparent;
   color: #aaa;
+  padding: 0.5rem 1rem;
 }
 
 .btn-ghost:hover {
   color: white;
-  text-decoration: underline;
+}
+
+.signup-form {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #333;
+}
+
+.signup-form h3 {
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.signup-form input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  background: #2a2a2a;
+  border: 1px solid #333;
+  border-radius: 6px;
+  color: white;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.dashboard-nav {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #333;
+}
+
+.nav-btn {
+  background: transparent;
+  color: #aaa;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-btn.active {
+  background: rgba(79, 172, 254, 0.2);
+  color: #4facfe;
+}
+
+.nav-btn:hover:not(.active) {
+  background: #2a2a2a;
+}
+
+.dashboard-content {
+  min-height: 400px;
+  margin-bottom: 2rem;
 }
 
 .dashboard-stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
-  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
-.stat-card {
-  background: #252525;
-  padding: 1.5rem;
-  border-radius: 8px;
+.dashboard-footer {
   text-align: center;
-  border: 1px dashed #444;
-  transition: transform 0.2s ease;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #333;
 }
 
-.stat-card:hover {
-  transform: translateY(-5px);
-}
-
-.stat-card h3 {
-  font-size: 2rem;
-  margin: 0.5rem 0;
-  color: white;
-}
-
-.stat-icon {
-  font-size: 1.8rem;
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.auth-top{
-  width: fit-content;
-  margin: auto;
-}
-
-@media (max-width: 600px) {
-  .auth-card, .dashboard {
-    padding: 1.5rem;
+@media (max-width: 768px) {
+  .ngo-dashboard {
+    padding: 1rem;
   }
 
-  .auth-actions, .dashboard-actions {
+  .auth-card, .dashboard {
+    padding: 2rem 1.5rem;
+  }
+
+  .auth-actions {
     flex-direction: column;
-    gap: 0.75rem;
+  }
+
+  .dashboard-nav {
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+
+  .nav-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .dashboard-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-stats {
+    grid-template-columns: 1fr;
   }
 }
