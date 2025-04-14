@@ -17,7 +17,8 @@ export class NavbarComponent {
     { label: 'Voices of War', path: '/voices-of-war' },
     { label: 'Where Names Rest', path: '/where-names-rest' },
     { label: 'NGO Dashboard', path: '/ngo-dashboard' },
-    { label: 'Request Help', path: '/request' }
+    { label: 'Request Help', path: '/request' },
+    { label: 'Avail Help', path: '/avail-help' }
   ];
 
   isMobileMenuOpen = false;

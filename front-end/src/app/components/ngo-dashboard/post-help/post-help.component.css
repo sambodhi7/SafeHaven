@@ -111,6 +111,124 @@ button {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #252525;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  border: 1px solid #333;
+  position: relative;
+}
+
+.close-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.modal-subtitle {
+  color: #aaa;
+  margin-bottom: 1.5rem;
+}
+
+/* Response Cards */
+.responses-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.response-card {
+  background: #2a2a2a;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #333;
+}
+
+.response-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.response-name {
+  font-weight: 500;
+  color: #4facfe;
+}
+
+.response-date {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.response-location,
+.response-contact,
+.response-message {
+  margin: 0.5rem 0;
+  color: #ddd;
+}
+
+.response-contact {
+  word-break: break-all;
+}
+
+.no-responses {
+  text-align: center;
+  padding: 2rem;
+  color: #aaa;
+}
+
+/* Post Card Updates */
+.post-card {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.post-stats {
+  display: flex;
+  gap: 1rem;
+}
+
+.response-count {
+  color: #4facfe;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #ff6b6b;
+  border: 1px solid #ff6b6b;
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 107, 107, 0.1);
+}
+
 @media (max-width: 768px) {
   .help-form {
     padding: 1rem;

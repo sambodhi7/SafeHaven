@@ -1,0 +1,187 @@
+<div class="help-feed-container">
+  <header class="page-header">
+    <h1>Available Help Offers</h1>
+    <p class="subtitle">Verified assistance from humanitarian organizations</p>
+  </header>
+
+  <!-- Filters -->
+  <div class="filters-container">
+    <div class="filter-group">
+      <label for="location-filter">📍 Filter by Location</label>
+      <select id="location-filter" [(ngModel)]="selectedLocation">
+        @for (location of locations(); track location) {
+          <option [value]="location">{{ location }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label>🏷️ Filter by Type</label>
+      <div class="help-type-filters">
+        <button
+          [class.active]="selectedHelpType() === 'All'"
+          (click)="selectedHelpType.set('All')">
+          All
+        </button>
+        <button
+          [class.active]="selectedHelpType() === 'Shelter'"
+          (click)="selectedHelpType.set('Shelter')">
+          Shelter
+        </button>
+        <button
+          [class.active]="selectedHelpType() === 'Food'"
+          (click)="selectedHelpType.set('Food')">
+          Food
+        </button>
+        <button
+          [class.active]="selectedHelpType() === 'Clothes'"
+          (click)="selectedHelpType.set('Clothes')">
+          Clothes
+        </button>
+        <button
+          [class.active]="selectedHelpType() === 'Medical'"
+          (click)="selectedHelpType.set('Medical')">
+          Medical
+        </button>
+      </div>
+    </div>
+
+    <div class="filter-group search-group">
+      <label for="search">🔍 Search</label>
+      <input
+        id="search"
+        type="text"
+        [(ngModel)]="searchQuery"
+        placeholder="Search help offers...">
+    </div>
+  </div>
+
+  <!-- Help Posts -->
+  <div class="help-posts">
+    @for (post of filteredPosts(); track post.id) {
+      <div class="help-post" [class.urgent]="isExpiringSoon(post)">
+        <div class="post-header">
+          <div class="post-location">
+            <span class="icon">📍</span>
+            <span class="text">{{ post.location }}</span>
+          </div>
+          <div class="post-type">
+            <span class="icon">📦</span>
+            <span class="text">{{ post.helpType }}</span>
+          </div>
+        </div>
+
+        <div class="post-body">
+          <h3 class="post-title">{{ post.ngoName }}</h3>
+
+          @if (post.availableFrom || post.availableTo) {
+            <div class="post-dates">
+              <span class="icon">📆</span>
+              <span class="text">
+                {{ post.availableFrom | date:'mediumDate' }}
+                @if (post.availableTo) {
+                  - {{ post.availableTo | date:'mediumDate' }}
+                }
+              </span>
+              @if (isExpiringSoon(post)) {
+                <span class="expiry-warning">(Expiring soon)</span>
+              }
+            </div>
+          }
+
+          @if (post.remainingQuantity !== undefined) {
+            <div class="post-quantity">
+              <span class="icon">🔄</span>
+              <span class="text">
+                {{ post.remainingQuantity }} remaining of {{ post.initialQuantity }}
+              </span>
+            </div>
+          }
+
+          <p class="post-description">{{ post.description }}</p>
+        </div>
+
+        <div class="post-footer">
+          <button class="avail-btn" (click)="openAvailModal(post.id)">
+            <span class="icon">✋</span>
+            Avail Offer
+          </button>
+        </div>
+      </div>
+    }
+
+
+
+    @if (filteredPosts().length === 0) {
+      <div class="no-results">
+        <p>No help offers found matching your filters.</p>
+      </div>
+    }
+  </div>
+
+  @if (showAvailModal()) {
+    <div class="modal-overlay" (click)="closeAvailModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <button class="close-modal" (click)="closeAvailModal()">×</button>
+
+        <h2>Avail Help Offer</h2>
+        <p class="modal-subtitle">Please provide your details so the NGO can contact you</p>
+
+        <form (ngSubmit)="submitAvailForm()" class="avail-form">
+          <div class="form-group">
+            <label for="name">Your Name (optional)</label>
+            <input
+              id="name"
+              type="text"
+              [(ngModel)]="availForm.name"
+              name="name"
+              placeholder="John Doe">
+          </div>
+
+          <div class="form-group">
+            <label for="contact">Contact Info (optional)</label>
+            <input
+              id="contact"
+              type="text"
+              [(ngModel)]="availForm.contact"
+              name="contact"
+              placeholder="Email or phone number">
+          </div>
+
+          <div class="form-group">
+            <label for="location">Your Location (optional)</label>
+            <input
+              id="location"
+              type="text"
+              [(ngModel)]="availForm.location"
+              name="location"
+              placeholder="Current city or address">
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message (optional)</label>
+            <textarea
+              id="message"
+              [(ngModel)]="availForm.message"
+              name="message"
+              placeholder="Any additional information..."></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="cancel-btn" (click)="closeAvailModal()">Cancel</button>
+            <button type="submit" class="submit-btn">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  }
+
+  <!-- Load More Button -->
+  @if (visibleCount() < helpPosts().length) {
+    <div class="load-more-container">
+      <button class="load-more-btn" (click)="loadMore()">
+        Load More ({{ helpPosts().length - visibleCount() }} remaining)
+      </button>
+    </div>
+  }
+</div>

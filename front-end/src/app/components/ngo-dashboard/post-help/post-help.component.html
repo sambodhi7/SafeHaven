@@ -5,22 +5,32 @@
     <div class="form-group">
       <label>Type of Help</label>
       <select [(ngModel)]="helpType">
-        <option value="food">Food</option>
-        <option value="shelter">Shelter</option>
-        <option value="medical">Medical</option>
-        <option value="clothing">Clothing</option>
-        <option value="other">Other</option>
+        <option value="Food">Food</option>
+        <option value="Shelter">Shelter</option>
+        <option value="Medical">Medical</option>
+        <option value="Clothing">Clothing</option>
+        <option value="Other">Other</option>
       </select>
     </div>
 
     <div class="form-group">
       <label>Locations</label>
-      <input type="text" [(ngModel)]="locations" placeholder="City, Country (separate multiple with commas)">
+      <input type="text" [(ngModel)]="location" placeholder="City, Country (separate multiple with commas)">
     </div>
 
     <div class="form-group">
       <label>Description</label>
       <textarea [(ngModel)]="description" placeholder="Describe the help you're offering"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Available From Date</label>
+      <input type="date" [(ngModel)]="availableFrom" name="availableFrom">
+    </div>
+
+    <div class="form-group">
+      <label>Available To Date (optional)</label>
+      <input type="date" [(ngModel)]="availableTo" name="availableTo">
     </div>
 
     <div class="form-group">
@@ -34,18 +44,68 @@
   <div class="active-posts">
     <h4>Your Active Help Posts</h4>
     @for (post of activePosts(); track post.id) {
-      <div class="post-card">
+      <div class="post-card" (click)="showPostResponses(post.id)">
         <div class="post-header">
-          <span class="post-type">{{ post.type | titlecase }}</span>
-          <span class="post-date">{{ post.date | date }}</span>
+          <span class="post-type">{{ post.helpType | titlecase }}</span>
+          <span class="post-date">{{ post.postedDate | date }}</span>
         </div>
-        <p class="post-locations">📍 {{ post.locations }}</p>
+        <p class="post-locations">📍 {{ post.location }}</p>
         <p class="post-description">{{ post.description }}</p>
         <div class="post-footer">
-          <span>Capacity: {{ post.capacity }} people</span>
-          <button class="btn-ghost" (click)="removePost(post.id)">Remove</button>
+          <div class="post-stats">
+            <span>Capacity: {{ post.remainingQuantity }}/{{ post.initialQuantity }}</span>
+            <span class="response-count">
+              {{ availResponses().length }} responses
+            </span>
+          </div>
+          <button class="btn-ghost" (click)="removePost(post.id); $event.stopPropagation()">
+            Remove
+          </button>
         </div>
       </div>
     }
   </div>
+
+  <!-- Responses Modal -->
+  @if (showResponsesModal()) {
+    <div class="modal-overlay" (click)="closeResponsesModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <button class="close-modal" (click)="closeResponsesModal()">×</button>
+
+        <h3>People Who Availed This Offer</h3>
+        <p class="modal-subtitle">
+          {{ currentPostResponses().length }} people have shown interest
+        </p>
+
+        <div class="responses-list">
+          @for (response of currentPostResponses(); track response.id) {
+            <div class="response-card">
+              <div class="response-header">
+                <span class="response-name">{{ response.name || 'Anonymous' }}</span>
+                <span class="response-date">{{ response.submittedAt | date:'shortDate' }}</span>
+              </div>
+
+              @if (response.location) {
+                <p class="response-location">📍 {{ response.location }}</p>
+              }
+
+              @if (response.contact) {
+                <p class="response-contact">📞 {{ response.contact }}</p>
+              }
+
+              @if (response.message) {
+                <p class="response-message">💬 {{ response.message }}</p>
+              }
+            </div>
+          }
+
+          @if (currentPostResponses().length === 0) {
+            <div class="no-responses">
+              <p>No one has availed this offer yet</p>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  }
 </div>

@@ -48,5 +48,11 @@ export const routes: Routes = [
       loadComponent() {
         return import('./pages/ngo-dashboard/ngo-dashboard.component').then(c => c.NgoDashboardComponent)
       }
+    },
+    {
+      path: 'avail-help',
+      loadComponent() {
+        return import('./pages/avail-help/avail-help.component').then(c => c.AvailHelpComponent)
+      }
     }
 ];
