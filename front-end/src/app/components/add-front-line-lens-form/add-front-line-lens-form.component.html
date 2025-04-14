@@ -1,32 +1,80 @@
-<div class="bg-gray-800 ml-10 mr-10 rounded-2xl shadow-2xl" style="text-align: center; padding: 2rem; ">
+<div class="flex justify-center items-center">
+  <div class="flex flex-col bg-gray-800 ml-5 mr-5 rounded-2xl shadow-2xl w-full lg:max-w-4xl md:max-w-3xl" style="text-align: center; padding: 2rem; ">
     
-  <h1 class="text-5xl m-5">Report It!</h1>
+    <h1 class="text-5xl m-5">Report It!</h1>
 
-    <!-- @if (capturedImage) {
-        <div  style="margin-top: 2rem;">
-            <h3>Captured Image:</h3>
-            <img [src]="capturedImage?.imageAsDataUrl" [alt]="'Captured photo'" style="max-width: 100%; height: auto;" />
-            <button (click)="reset()">Reset</button>
-        </div>
+
+  <!-- 
+       @if (capturedImage) {
+          <div  style="margin-top: 2rem;">
+              <h3>Captured Image:</h3>
+              <img [src]="capturedImage?.imageAsDataUrl" [alt]="'Captured photo'" style="max-width: 100%; height: auto;" />
+              <button (click)="reset()">Reset</button>
+          </div>
+          
+      }
+      @else {
+          <webcam 
+        [trigger]="triggerObservable" 
+        (imageCapture)="handleImage($event)">
+      </webcam>
+  
+      <button (click)="triggerSnapshot()" style="margin-top: 1rem;">
+        📸 Capture Photo
+      </button>
+      } 
+     
+        -->
+     
         
-    }
-    @else {
-        <webcam 
-      [trigger]="triggerObservable" 
-      (imageCapture)="handleImage($event)">
-    </webcam>
+        <div class="flex flex-col items-center justify-center">
+        @if(!capturedImage){
+          <webcam [style]="'width:100%'"
+          [trigger]="triggerObservable" 
+          (imageCapture)="handleImage($event)">
+          </webcam>
+        }@else {
+          <img [src]="capturedImage?.imageAsDataUrl" >
+        }
+        
+          <button class="capture-image" (click)="toggle()" class="btn-main p-5 text-2xl h-20 w-20 rounded-full bg-center "  style="margin-top: 1rem;">
+         
+            @if(!capturedImage){
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4C8 3.44772 8.41328 3 8.92308 3H15.0769C15.5867 3 16 3.44772 16 4C16 4.55228 15.5867 5 15.0769 5H8.92308C8.41328 5 8 4.55228 8 4Z" fill="#1C274C"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M9.77778 21H14.2222C17.3433 21 18.9038 21 20.0248 20.2777C20.51 19.965 20.9267 19.5632 21.251 19.0953C22 18.0143 22 16.5095 22 13.4999C22 10.4903 21.9998 8.9857 21.2508 7.90473C20.9266 7.43676 20.5099 7.03497 20.0246 6.72228C18.9036 6 17.3431 6 14.2221 6H9.77761C6.65659 6 5.09607 6 3.97508 6.72228C3.48979 7.03497 3.07312 7.43676 2.74886 7.90473C2 8.98547 2 10.4896 2 13.4979L2 13.4999C2 16.5095 2 18.0143 2.74902 19.0953C3.07328 19.5632 3.48995 19.965 3.97524 20.2777C5.09624 21 6.65675 21 9.77778 21ZM7.83333 13.4999C7.83333 11.2808 9.69881 9.48196 12 9.48196C14.3012 9.48196 16.1667 11.2808 16.1667 13.4999C16.1667 15.7189 14.3012 17.5178 12 17.5178C9.69881 17.5178 7.83333 15.7189 7.83333 13.4999ZM9.5 13.4999C9.5 12.1685 10.6193 11.0891 12 11.0891C13.3807 11.0891 14.5 12.1685 14.5 13.4999C14.5 14.8313 13.3807 15.9106 12 15.9106C10.6193 15.9106 9.5 14.8313 9.5 13.4999ZM18.1111 9.48196C17.6509 9.48196 17.2778 9.84174 17.2778 10.2855C17.2778 10.7294 17.6509 11.0891 18.1111 11.0891H18.6667C19.1269 11.0891 19.5 10.7294 19.5 10.2855C19.5 9.84174 19.1269 9.48196 18.6667 9.48196H18.1111Z" fill="#1C274C"></path> </g></svg>
+            }@else {
+              <svg fill="#000000" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M0 14.545L1.455 16 8 9.455 14.545 16 16 14.545 9.455 8 16 1.455 14.545 0 8 6.545 1.455 0 0 1.455 6.545 8z" fill-rule="evenodd"></path> </g></svg>   }  
+        
+            
+            
+          </button>
+        </div>
 
-    <button (click)="triggerSnapshot()" style="margin-top: 1rem;">
-      📸 Capture Photo
-    </button>
-    } -->
-   
-     <app-audio-recorder></app-audio-recorder>
-   
-     <!-- @if(lat()!=0){
-      <app-googlemap [lat]="lat()" [lng]="lng()" ></app-googlemap>
-    } -->
-    
+      
+      
+      <form [formGroup]="form" class="flex-col text-left  " >
+       
+        <label for="title"  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title Your Report</label>
+        
+          <input type="text" formControlName="title"  id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Title goes here" required />
+        
+        <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your message</label>
+        <textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Leave a comment..."></textarea>
+      
+  
+      </form>
+  
+  
+      <app-audio-recorder></app-audio-recorder>
+      
 
+      
+      <h2 class="text-2xl mb-5 mt-5">Your location </h2>
+      @if(lat()!=0){
+        <app-googlemap  [lat]="lat()" [lng]="lng()" ></app-googlemap>
+      }
+      
+  
+  </div>
 </div>
+
     

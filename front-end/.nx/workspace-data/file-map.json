@@ -1,0 +1,493 @@
+{
+  "version": "6.0",
+  "nxVersion": "20.7.2",
+  "pathMappings": {
+    "@spartan-ng/ui-formfield-helm": [
+      ".\\libs/ui/ui-formfield-helm/src/index.ts"
+    ],
+    "@spartan-ng/ui-input-helm": [
+      ".\\libs/ui/ui-input-helm/src/index.ts"
+    ],
+    "@spartan-ng/ui-button-helm": [
+      ".\\libs/ui/ui-button-helm/src/index.ts"
+    ],
+    "@spartan-ng/ui-card-helm": [
+      ".\\libs/ui/ui-card-helm/src/index.ts"
+    ]
+  },
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {
+      "front-end": [
+        {
+          "file": ".editorconfig",
+          "hash": "8037249353422744134"
+        },
+        {
+          "file": ".gitignore",
+          "hash": "10175894702052279752"
+        },
+        {
+          "file": ".postcssrc.json",
+          "hash": "8859462536152254982"
+        },
+        {
+          "file": ".vscode/extensions.json",
+          "hash": "11934160580685414355"
+        },
+        {
+          "file": ".vscode/launch.json",
+          "hash": "17406702432687230417"
+        },
+        {
+          "file": ".vscode/tasks.json",
+          "hash": "10093397977228577162"
+        },
+        {
+          "file": "README.md",
+          "hash": "1176071989078516320"
+        },
+        {
+          "file": "angular.json",
+          "hash": "3878856901618183432"
+        },
+        {
+          "file": "components.json",
+          "hash": "9084201805420329269"
+        },
+        {
+          "file": "libs/ui/ui-button-helm/src/index.ts",
+          "hash": "6820636755422809420"
+        },
+        {
+          "file": "libs/ui/ui-button-helm/src/lib/hlm-button.directive.ts",
+          "hash": "12517557595974592820"
+        },
+        {
+          "file": "libs/ui/ui-button-helm/src/lib/hlm-button.token.ts",
+          "hash": "15400945862735069611"
+        },
+        {
+          "file": "libs/ui/ui-card-helm/src/index.ts",
+          "hash": "895144886741349159"
+        },
+        {
+          "file": "libs/ui/ui-card-helm/src/lib/hlm-card-content.directive.ts",
+          "hash": "9035879925648345616"
+        },
+        {
+          "file": "libs/ui/ui-card-helm/src/lib/hlm-card-description.directive.ts",
+          "hash": "14098578458279801814"
+        },
+        {
+          "file": "libs/ui/ui-card-helm/src/lib/hlm-card-footer.directive.ts",
+          "hash": "16726457296743498723"
+        },
+        {
+          "file": "libs/ui/ui-card-helm/src/lib/hlm-card-header.directive.ts",
+          "hash": "18163004721185694049"
+        },
+        {
+          "file": "libs/ui/ui-card-helm/src/lib/hlm-card-title.directive.ts",
+          "hash": "325903515394334167"
+        },
+        {
+          "file": "libs/ui/ui-card-helm/src/lib/hlm-card.directive.ts",
+          "hash": "6564493340464584093"
+        },
+        {
+          "file": "libs/ui/ui-formfield-helm/src/index.ts",
+          "hash": "10129577571815628638"
+        },
+        {
+          "file": "libs/ui/ui-formfield-helm/src/lib/form-field.spec.ts",
+          "hash": "12061800241710250282"
+        },
+        {
+          "file": "libs/ui/ui-formfield-helm/src/lib/hlm-error.directive.ts",
+          "hash": "16405856246732121017"
+        },
+        {
+          "file": "libs/ui/ui-formfield-helm/src/lib/hlm-form-field.component.ts",
+          "hash": "6869747705745949498"
+        },
+        {
+          "file": "libs/ui/ui-formfield-helm/src/lib/hlm-hint.directive.ts",
+          "hash": "13057782687192237161"
+        },
+        {
+          "file": "libs/ui/ui-input-helm/src/index.ts",
+          "hash": "17755648424496072041"
+        },
+        {
+          "file": "libs/ui/ui-input-helm/src/lib/hlm-input-error.directive.ts",
+          "hash": "16276122020969752876"
+        },
+        {
+          "file": "libs/ui/ui-input-helm/src/lib/hlm-input.directive.ts",
+          "hash": "16174119161533130786"
+        },
+        {
+          "file": "package-lock.json",
+          "hash": "17723268405914514173"
+        },
+        {
+          "file": "package.json",
+          "hash": "17900217995150908753",
+          "deps": [
+            "npm:@angular-devkit/build-angular",
+            "npm:@angular/cli",
+            "npm:@angular/compiler-cli",
+            "npm:@spartan-ng/cli",
+            "npm:@types/jasmine",
+            "npm:@types/recordrtc",
+            "npm:jasmine-core",
+            "npm:karma",
+            "npm:karma-chrome-launcher",
+            "npm:karma-coverage",
+            "npm:karma-jasmine",
+            "npm:karma-jasmine-html-reporter",
+            "npm:tailwind-merge",
+            "npm:tailwindcss-animate",
+            "npm:typescript",
+            "npm:@angular/cdk",
+            "npm:@angular/common",
+            "npm:@angular/compiler",
+            "npm:@angular/core",
+            "npm:@angular/forms",
+            "npm:@angular/platform-browser",
+            "npm:@angular/platform-browser-dynamic",
+            "npm:@angular/router",
+            "npm:@fortawesome/fontawesome-free",
+            "npm:@omnedia/ngx-dotpattern",
+            "npm:@omnedia/ngx-flickering-grid",
+            "npm:@omnedia/ngx-gridpattern",
+            "npm:@omnedia/ngx-neon-underline",
+            "npm:@omnedia/ngx-retro-grid",
+            "npm:@omnedia/ngx-word-morph",
+            "npm:@spartan-ng/brain",
+            "npm:@tailwindcss/postcss",
+            "npm:class-variance-authority",
+            "npm:clsx",
+            "npm:ngx-webcam",
+            "npm:postcss",
+            "npm:recordrtc",
+            "npm:rxjs",
+            "npm:tailwindcss",
+            "npm:tslib",
+            "npm:zone.js"
+          ]
+        },
+        {
+          "file": "public/favicon.ico",
+          "hash": "3988961587069885523"
+        },
+        {
+          "file": "src/app/app.component.css",
+          "hash": "11136814164470116103"
+        },
+        {
+          "file": "src/app/app.component.html",
+          "hash": "16130245428694722836"
+        },
+        {
+          "file": "src/app/app.component.spec.ts",
+          "hash": "9512006806174667095"
+        },
+        {
+          "file": "src/app/app.component.ts",
+          "hash": "14692964491176868417"
+        },
+        {
+          "file": "src/app/app.config.ts",
+          "hash": "16561019206697382666"
+        },
+        {
+          "file": "src/app/app.routes.ts",
+          "hash": "14828276805836837056"
+        },
+        {
+          "file": "src/app/components/add-front-line-lens-form/add-front-line-lens-form.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/components/add-front-line-lens-form/add-front-line-lens-form.component.html",
+          "hash": "14589292355589772327"
+        },
+        {
+          "file": "src/app/components/add-front-line-lens-form/add-front-line-lens-form.component.spec.ts",
+          "hash": "7581703492824455243"
+        },
+        {
+          "file": "src/app/components/add-front-line-lens-form/add-front-line-lens-form.component.ts",
+          "hash": "15226084281211244675"
+        },
+        {
+          "file": "src/app/components/audio-recorder/audio-recorder.component.css",
+          "hash": "17127993474492152960"
+        },
+        {
+          "file": "src/app/components/audio-recorder/audio-recorder.component.html",
+          "hash": "2073674515213060239"
+        },
+        {
+          "file": "src/app/components/audio-recorder/audio-recorder.component.spec.ts",
+          "hash": "5314290793784418351"
+        },
+        {
+          "file": "src/app/components/audio-recorder/audio-recorder.component.ts",
+          "hash": "14979301441631898938"
+        },
+        {
+          "file": "src/app/components/footer/footer.component.css",
+          "hash": "16931342746037311315"
+        },
+        {
+          "file": "src/app/components/footer/footer.component.html",
+          "hash": "9356122588839077164"
+        },
+        {
+          "file": "src/app/components/footer/footer.component.spec.ts",
+          "hash": "14137441509105306087"
+        },
+        {
+          "file": "src/app/components/footer/footer.component.ts",
+          "hash": "6482617322317050641"
+        },
+        {
+          "file": "src/app/components/googlemap/googlemap.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/components/googlemap/googlemap.component.html",
+          "hash": "4804218718516390134"
+        },
+        {
+          "file": "src/app/components/googlemap/googlemap.component.spec.ts",
+          "hash": "774959161374044099"
+        },
+        {
+          "file": "src/app/components/googlemap/googlemap.component.ts",
+          "hash": "6038217277555418664"
+        },
+        {
+          "file": "src/app/components/navbar/navbar.component.css",
+          "hash": "13840346855489109661"
+        },
+        {
+          "file": "src/app/components/navbar/navbar.component.html",
+          "hash": "3798806421629378062"
+        },
+        {
+          "file": "src/app/components/navbar/navbar.component.spec.ts",
+          "hash": "18132722331439589879"
+        },
+        {
+          "file": "src/app/components/navbar/navbar.component.ts",
+          "hash": "14626777384946157730"
+        },
+        {
+          "file": "src/app/components/ngo-dashboard/post-help/post-help.component.css",
+          "hash": "15388131911527707399"
+        },
+        {
+          "file": "src/app/components/ngo-dashboard/post-help/post-help.component.html",
+          "hash": "4776953139829420146"
+        },
+        {
+          "file": "src/app/components/ngo-dashboard/post-help/post-help.component.spec.ts",
+          "hash": "16434918877747475950"
+        },
+        {
+          "file": "src/app/components/ngo-dashboard/post-help/post-help.component.ts",
+          "hash": "13151241723913544255"
+        },
+        {
+          "file": "src/app/components/ngo-dashboard/public-donations/public-donations.component.css",
+          "hash": "10735024332758667460"
+        },
+        {
+          "file": "src/app/components/ngo-dashboard/public-donations/public-donations.component.html",
+          "hash": "10456277347259178945"
+        },
+        {
+          "file": "src/app/components/ngo-dashboard/public-donations/public-donations.component.spec.ts",
+          "hash": "11988773439794340371"
+        },
+        {
+          "file": "src/app/components/ngo-dashboard/public-donations/public-donations.component.ts",
+          "hash": "17916174231927993287"
+        },
+        {
+          "file": "src/app/components/ngo-dashboard/refugee-requests/refugee-requests.component.css",
+          "hash": "2458956507700670989"
+        },
+        {
+          "file": "src/app/components/ngo-dashboard/refugee-requests/refugee-requests.component.html",
+          "hash": "16303485086670662738"
+        },
+        {
+          "file": "src/app/components/ngo-dashboard/refugee-requests/refugee-requests.component.spec.ts",
+          "hash": "6527789362442280259"
+        },
+        {
+          "file": "src/app/components/ngo-dashboard/refugee-requests/refugee-requests.component.ts",
+          "hash": "7449934402603799063"
+        },
+        {
+          "file": "src/app/components/ngo-dashboard/stats-cards/stats-cards.component.css",
+          "hash": "12685109042146915465"
+        },
+        {
+          "file": "src/app/components/ngo-dashboard/stats-cards/stats-cards.component.html",
+          "hash": "8701609973898839145"
+        },
+        {
+          "file": "src/app/components/ngo-dashboard/stats-cards/stats-cards.component.spec.ts",
+          "hash": "7073857940514654136"
+        },
+        {
+          "file": "src/app/components/ngo-dashboard/stats-cards/stats-cards.component.ts",
+          "hash": "11521696227054831206"
+        },
+        {
+          "file": "src/app/pages/clear-cut/clear-cut.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/pages/clear-cut/clear-cut.component.html",
+          "hash": "5951785073035558502"
+        },
+        {
+          "file": "src/app/pages/clear-cut/clear-cut.component.spec.ts",
+          "hash": "14681378572150182040"
+        },
+        {
+          "file": "src/app/pages/clear-cut/clear-cut.component.ts",
+          "hash": "2122539111257800407"
+        },
+        {
+          "file": "src/app/pages/echoe-of-silence/echoe-of-silence.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/pages/echoe-of-silence/echoe-of-silence.component.html",
+          "hash": "2517979233966301308"
+        },
+        {
+          "file": "src/app/pages/echoe-of-silence/echoe-of-silence.component.spec.ts",
+          "hash": "11428256691601864418"
+        },
+        {
+          "file": "src/app/pages/echoe-of-silence/echoe-of-silence.component.ts",
+          "hash": "3286785684512058330"
+        },
+        {
+          "file": "src/app/pages/frontline-lens/frontline-lens.component.css",
+          "hash": "9086558983117264688"
+        },
+        {
+          "file": "src/app/pages/frontline-lens/frontline-lens.component.html",
+          "hash": "1717464664547394601"
+        },
+        {
+          "file": "src/app/pages/frontline-lens/frontline-lens.component.spec.ts",
+          "hash": "2467580852530735401"
+        },
+        {
+          "file": "src/app/pages/frontline-lens/frontline-lens.component.ts",
+          "hash": "5882382665883451500"
+        },
+        {
+          "file": "src/app/pages/home/home.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/pages/home/home.component.html",
+          "hash": "16619066491338721079"
+        },
+        {
+          "file": "src/app/pages/home/home.component.spec.ts",
+          "hash": "2683587061765069593"
+        },
+        {
+          "file": "src/app/pages/home/home.component.ts",
+          "hash": "9071807304367974672"
+        },
+        {
+          "file": "src/app/pages/ngo-dashboard/ngo-dashboard.component.css",
+          "hash": "14788193707333703444"
+        },
+        {
+          "file": "src/app/pages/ngo-dashboard/ngo-dashboard.component.html",
+          "hash": "5046994839867498985"
+        },
+        {
+          "file": "src/app/pages/ngo-dashboard/ngo-dashboard.component.spec.ts",
+          "hash": "13589699483903230556"
+        },
+        {
+          "file": "src/app/pages/ngo-dashboard/ngo-dashboard.component.ts",
+          "hash": "10903113986001241088"
+        },
+        {
+          "file": "src/app/pages/voices-of-war/voices-of-war.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/pages/voices-of-war/voices-of-war.component.html",
+          "hash": "1934028744159038993"
+        },
+        {
+          "file": "src/app/pages/voices-of-war/voices-of-war.component.spec.ts",
+          "hash": "12778399642922473829"
+        },
+        {
+          "file": "src/app/pages/voices-of-war/voices-of-war.component.ts",
+          "hash": "13019057172209025982"
+        },
+        {
+          "file": "src/app/pages/where-names-rest/where-names-rest.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/pages/where-names-rest/where-names-rest.component.html",
+          "hash": "8925117123671194549"
+        },
+        {
+          "file": "src/app/pages/where-names-rest/where-names-rest.component.spec.ts",
+          "hash": "11277887546668950444"
+        },
+        {
+          "file": "src/app/pages/where-names-rest/where-names-rest.component.ts",
+          "hash": "811084550541432654"
+        },
+        {
+          "file": "src/index.html",
+          "hash": "360386984539026987"
+        },
+        {
+          "file": "src/main.ts",
+          "hash": "4169901790405087765"
+        },
+        {
+          "file": "src/styles.css",
+          "hash": "14333161968426678891"
+        },
+        {
+          "file": "tsconfig.app.json",
+          "hash": "878007182349391971"
+        },
+        {
+          "file": "tsconfig.json",
+          "hash": "10248710673103933278"
+        },
+        {
+          "file": "tsconfig.spec.json",
+          "hash": "11023685540591620072"
+        }
+      ]
+    },
+    "nonProjectFiles": []
+  }
+}

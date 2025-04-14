@@ -27,6 +27,9 @@
       ],
       "@spartan-ng/ui-card-helm": [
         ".\\libs/ui/ui-card-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-label-helm": [
+        ".\\libs/ui/ui-label-helm/src/index.ts"
       ]
     }
   },
