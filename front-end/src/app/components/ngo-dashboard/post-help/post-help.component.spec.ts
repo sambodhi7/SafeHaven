@@ -1,0 +1,23 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { PostHelpComponent } from './post-help.component';
+
+describe('PostHelpComponent', () => {
+  let component: PostHelpComponent;
+  let fixture: ComponentFixture<PostHelpComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [PostHelpComponent]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(PostHelpComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
