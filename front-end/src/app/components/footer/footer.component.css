@@ -1,8 +1,33 @@
+.component.scss
+
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      width: 100%;
+      height: 450px;
+
+      h1 {
+        font-size: 6rem;
+        font-weight: bold;
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+        background-image: linear-gradient(to bottom, #ffd319, #ff2975, #8c1eff);
+      }
+    }
+  
+
 :host {
   display: block;
   position: relative;
   overflow: hidden;
 }
+
+
 
 .bg-grid{
   z-index: 0;
@@ -136,6 +161,7 @@
 .newsletter-form {
   background: linear-gradient(135deg, #0a0a0a 0%, #151515 100%);
   display: flex;
+  flex-direction: column;
   gap: 0.5rem;
 }
 
