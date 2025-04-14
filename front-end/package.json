@@ -36,6 +36,7 @@
     "@angular-devkit/build-angular": "^19.2.7",
     "@angular/cli": "^19.2.7",
     "@angular/compiler-cli": "^19.2.0",
+    "@spartan-ng/cli": "^0.0.1-alpha.439",
     "@types/jasmine": "~5.1.0",
     "@types/recordrtc": "^5.6.14",
     "jasmine-core": "~5.6.0",

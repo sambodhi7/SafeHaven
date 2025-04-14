@@ -1,8 +1,22 @@
 <nav class="navbar">
-  <div class="navbar-brand">SafeHaven</div>
-  <ul class="navbar-nav">
+  <div class="navbar-brand">
+    <span class="logo-text">SafeHaven</span>
+    <!-- We'll add a logo here later -->
+  </div>
+
+  <button class="hamburger" (click)="toggleMobileMenu()" [class.active]="isMobileMenuOpen">
+    <span class="hamburger-line top"></span>
+    <span class="hamburger-line middle"></span>
+    <span class="hamburger-line bottom"></span>
+  </button>
+
+  <ul class="navbar-nav" [class.mobile-open]="isMobileMenuOpen">
     @for (link of navLinks; track link.label) {
-      <li><a [routerLink]="link.path">{{ link.label }}</a></li>
+      <li>
+        <a [routerLink]="link.path" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="isMobileMenuOpen = false">
+          {{ link.label }}
+        </a>
+      </li>
     }
   </ul>
 </nav>

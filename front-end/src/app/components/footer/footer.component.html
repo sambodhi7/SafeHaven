@@ -1,35 +1,45 @@
-<div class="footer">
-  <!-- <ngxui-grid-background class="grid-bg"></ngxui-grid-background> -->
-  <om-gridpattern class="grid-bg">
+<om-gridpattern class="bg-grid">
+  <footer class="footer">
+
     <div class="footer-content">
-      <div class="footer-left">
-        <h2>SafeHaven</h2>
-        <p>Remembering those we've lost. Empowering those who survive.</p>
+      <div class="footer-column">
+        <h3 class="footer-title">About SafeHaven</h3>
+        <p class="footer-text"><b style="color: #4facfe;">Remembering those we've lost. Empowering those who survive. </b> <br>A platform for supporting refugees, telling untold stories, and connecting helpers to those in need.</p>
       </div>
 
-      <div class="footer-links">
-        <h4>Quick Links</h4>
-        <ul>
+      <div class="footer-column">
+        <h3 class="footer-title">Quick Links</h3>
+        <ul class="footer-links">
           <li><a routerLink="/">Home</a></li>
-          <li><a routerLink="/request">Request Help</a></li>
-          <li><a routerLink="/help">Donate / Help</a></li>
-          <li><a routerLink="/about">About</a></li>
-          <li><a routerLink="/contact">Contact Us</a></li>
+          <li><a routerLink="/clear-cut">Clear Cut</a></li>
+          <li><a routerLink="/echoes-of-silence">Echoes of Silence</a></li>
+          <li><a routerLink="/help">Help</a></li>
         </ul>
       </div>
 
-      <div class="footer-social">
-        <h4>Follow Us</h4>
-        <div class="icons">
-          <a href="#"><i class="fab fa-instagram">Instagram</i></a>
-          <a href="#"><i class="fab fa-twitter">Twitter</i></a>
-          <a href="https://github.com/sambodhi7/SafeHaven">Github<i class="fab fa-github"></i></a>
+      <div class="footer-column">
+        <h3 class="footer-title">Connect</h3>
+        <div class="social-icons">
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+        <div class="newsletter">
+          <h4>Stay Updated</h4>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Your email">
+            <button type="submit">Subscribe</button>
+          </div>
         </div>
       </div>
     </div>
-
     <div class="footer-bottom">
       <p>© 2025 SafeHaven. All rights reserved.</p>
+      <div class="footer-legal">
+        <a routerLink="/privacy">Privacy Policy</a>
+        <a routerLink="/terms">Terms of Service</a>
+      </div>
     </div>
-  </om-gridpattern>
-</div>
+  </footer>
+</om-gridpattern>

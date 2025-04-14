@@ -19,4 +19,10 @@ export class NavbarComponent {
     { label: 'Help', path: '/help' },
     { label: 'Request Help', path: '/request' }
   ];
+
+  isMobileMenuOpen = false;
+
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
 }
