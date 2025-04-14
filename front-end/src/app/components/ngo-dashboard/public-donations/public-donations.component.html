@@ -24,7 +24,7 @@
   <div class="active-campaigns">
     <h4>Active Campaigns</h4>
     @for (campaign of campaigns(); track campaign.id) {
-      <div class="campaign-card">
+      <div class="campaign-card" (click)="showCampaignDonors(campaign.id)">
         <div class="campaign-header">
           <h5>{{ campaign.title }}</h5>
           <span class="campaign-status">Active</span>
@@ -32,15 +32,63 @@
         <p class="campaign-target">🎯 Target: {{ campaign.target }}</p>
         <p class="campaign-description">{{ campaign.description }}</p>
         <div class="campaign-progress">
-          <div class="progress-bar" [style.width.%]="(campaign.current / campaign.targetValue * 100)">
-            <span>{{ (campaign.current / campaign.targetValue * 100) | number:'1.0-0' }}%</span>
+          <div class="progress-bar" [style.width.%]="getProgressPercentage(campaign.current, campaign.targetValue)">
+            <span>{{ getProgressPercentage(campaign.current, campaign.targetValue) | number:'1.0-0' }}%</span>
           </div>
         </div>
         <div class="campaign-footer">
           <span>Raised: {{ campaign.current }} of {{ campaign.targetValue }}</span>
-          <button class="btn-secondary">Share</button>
+          <button class="btn-secondary" (click)="$event.stopPropagation()">Share</button>
         </div>
       </div>
     }
   </div>
+
+  <!-- Donors Modal -->
+  @if (showDonorsModal()) {
+    <div class="modal-overlay" (click)="closeDonorsModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <button class="close-modal" (click)="closeDonorsModal()">×</button>
+
+        <h3>Donation Details</h3>
+        <p class="modal-subtitle">
+          Viewing donors for: {{ getCurrentCampaignTitle() }}
+        </p>
+
+        <div class="donors-list">
+          @for (donation of getCampaignDonations(); track donation.id) {
+            <div class="donor-card">
+              <div class="donor-header">
+                <span class="donor-name">{{ donation.donorName }}</span>
+                <span class="donation-date">{{ donation.date | date:'mediumDate' }}</span>
+              </div>
+
+              <div class="donation-details">
+                <span class="donation-amount">
+                  {{ donation.amount }}
+                  @if (isDonationInUSD(donation)) {
+                    USD
+                  }
+                </span>
+
+                @if (donation.message) {
+                  <p class="donation-message">💬 {{ donation.message }}</p>
+                }
+              </div>
+
+              @if (donation.contact && donation.contact !== 'N/A') {
+                <p class="donor-contact">📞 {{ donation.contact }}</p>
+              }
+            </div>
+          }
+
+          @if (getCampaignDonations().length === 0) {
+            <div class="no-donations">
+              <p>No donations received yet for this campaign</p>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  }
 </div>
