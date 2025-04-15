@@ -1,30 +1,50 @@
+<om-flickering-grid [squareSize]=15>
+  <div class="header">
+      <h1>Frontline Lens</h1>
+      <p class="subtitle">Verified ground reports from conflict zones</p>
+      <a routerLink="/add" class="new-post-btn">
+          Submit New Report
+      </a>
+  </div>
+  <div class="posts-container">
+    @for (frontline of frontLines(); track frontline['_id']) {
+        <article class="post-card" [class.has-audio]="frontline['audioPresent']">
+            <div class="post-media">
+                <img [src]="frontline['image']" alt="Frontline report image" class="post-image">
+                @if (frontline['audioPresent']) {
+                    <div class="audio-container">
+                        <audio [src]="frontline['audio']" controls class="audio-player"></audio>
+                    </div>
+                }
+            </div>
 
-<om-flickering-grid [squareSize]=15 >
-    <div class="header flex justify-center items-center text-gray-200">
-        <h1 class="text-7xl">
-            📷 Frontline Lens
-            
-           
-        </h1>
-    </div>
+            <div class="post-content">
+                <div class="post-header">
+                    <h2 class="post-title">{{ frontline['title'] }}</h2>
+                    <time class="post-date">{{ formatDate(frontline['postedOn']) }}</time>
+                </div>
+
+                <div class="post-message">
+                    <p>{{ frontline['message'] }}</p>
+                </div>
+
+                <div class="post-map">
+                    <app-googlemap
+                        [lat]="frontline['lat']"
+                        [lng]="frontline['long']"
+                        zoom="12"
+                        class="map-container">
+                    </app-googlemap>
+                </div>
+            </div>
+        </article>
+    }
+
+    @if (frontLines().length === 0) {
+        <div class="empty-state">
+            <p>No frontline reports yet. Be the first to share.</p>
+        </div>
+    }
+  </div>
 </om-flickering-grid>
 
-<div class="felx flex-col">
-    @for (frontline of frontLines(); track frontline['_id']) {
-    
-        <div class="flex flex-col items-center justify-center bg-gray-800">
-            <img [src]="frontline['image']" />
-
-            <h1 class="text-2xl" >{{frontline['title']}}</h1>
-            <h2>{{frontline['postedOn']}}</h2>
-            <h2>Message : </h2>
-            <p class="text-xl">{{frontline['message']}}</p>
-            @if(frontline['audioPresent']){
-                <audio [src]="frontline['audio']" controls></audio>
-            }
-            <app-googlemap [lat]="frontline['lat']" [lng]="frontline['long']" ></app-googlemap>
-            
-        </div>
-      }
-    
-</div>
