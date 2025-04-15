@@ -2,14 +2,14 @@
 <om-flickering-grid [squareSize]=15 >
     <div class="header flex justify-center items-center text-gray-200">
         <h1 class="text-7xl">
-            📷 Frontline Lens
+            Frontline Lens
             
            
         </h1>
     </div>
 </om-flickering-grid>
 
-<div class="felx flex-col">
+<!-- <div class="felx flex-col columns-2xs">
     @for (frontline of frontLines(); track frontline['_id']) {
     
         <div class="flex flex-col items-center justify-center bg-gray-800">
@@ -27,4 +27,54 @@
         </div>
       }
     
-</div>
+</div> -->
+
+<div class="container mt-5 mb-20 w-full justify-center items-center align-middle ">
+        
+    @for (frontline of frontLines(); track frontline['_id']) {
+        <div class="max-w-md mt-5 mx-auto bg-gray-900/60 backdrop-blur-md text-white rounded-3xl shadow-xl p-6 border border-gray-800 transition hover:shadow-2xl hover:border-indigo-500 duration-300 overflow-hidden">
+          <div class="mb-5">
+            <img 
+            [src]="`http://127.0.0.1:5000/image/${frontline['_id']}`" 
+            alt="Card image" 
+            class="w-full h-48 object-cover rounded-2xl mb-5 border border-gray-800"
+          />    
+            <h2 class="text-3xl font-extrabold tracking-tight text-white">{{frontline['title']}}</h2>
+            <p class="text-indigo-400 mt-1 text-sm uppercase tracking-wider">On {{frontline['postedOn']}}</p>
+          </div>
+          <p class="text-gray-300 leading-relaxed text-sm">
+            {{frontline['message']}}
+          </p>
+          @if(frontline['audioPresent']){
+            <audio class="mt-4 w-full mb-5" [src]="`http://127.0.0.1:5000/audio/${frontline['_id']}`" controls></audio>
+          }
+          <app-googlemap  [lat]="frontline['lat']" [lng]="frontline['long']" ></app-googlemap>
+            
+        </div>
+   
+    }
+
+    <button class="fab" (click)="openModal()">
+        <span class="fab-icon">+</span>
+        <span class="fab-text">Report</span>
+
+      </button>
+
+
+    @if (showModal()) {
+        <div class="modal-overlay" (click)="closeModal()">
+          <div class="modal-content" (click)="$event.stopPropagation()">
+            <button class="modal-close" (click)="closeModal()">&times;</button>
+            <app-add-front-line-lens-form></app-add-front-line-lens-form>
+              
+          
+           
+
+            
+              
+             
+            
+          </div>
+        </div>
+      }
+           

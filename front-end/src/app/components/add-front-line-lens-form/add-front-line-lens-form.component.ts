@@ -16,7 +16,8 @@ import { HlmLabelDirective } from '@spartan-ng/ui-label-helm';
   selector: 'app-add-front-line-lens-form',
   imports: [ WebcamModule, AudioRecorderComponent,ReactiveFormsModule,HlmInputDirective,HlmLabelDirective, GooglemapComponent],
   templateUrl: './add-front-line-lens-form.component.html',
-  styleUrl: './add-front-line-lens-form.component.css'
+  styleUrl: './add-front-line-lens-form.component.css',
+  standalone:true
 })
 export class AddFrontLineLensFormComponent {
   private trigger: Subject<void> = new Subject<void>();

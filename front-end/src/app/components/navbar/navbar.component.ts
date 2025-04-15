@@ -15,7 +15,6 @@ export class NavbarComponent {
     { label: 'Echoes of Silence', path: '/echoes-of-silence' },
     { label: 'Frontline Lens', path: '/frontline-lens' },
     { label: 'Voices of War', path: '/voices-of-war' },
-    { label: 'Where Names Rest', path: '/where-names-rest' },
     { label: 'NGO Dashboard', path: '/ngo-dashboard' },
     { label: 'Request Help', path: '/request' },
     { label: 'Avail Help', path: '/avail-help' },

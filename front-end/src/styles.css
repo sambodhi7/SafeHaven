@@ -5,3 +5,10 @@ body{
  padding: 0;
  height: 100%;
 }
+
+.typewriter-large {
+    font-size: 5rem;
+    letter-spacing: 0.25rem;
+    font-weight: bold;
+    padding-right: 0.5rem;
+  }

@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EchoeOfSilenceComponent } from './echoe-of-silence.component';
+import {NgxMeteorsComponent} from "@omnedia/ngx-meteors"
+
 
 describe('EchoeOfSilenceComponent', () => {
   let component: EchoeOfSilenceComponent;
@@ -8,7 +10,7 @@ describe('EchoeOfSilenceComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EchoeOfSilenceComponent]
+      imports: [EchoeOfSilenceComponent, NgxMeteorsComponent]
     })
     .compileComponents();
 
