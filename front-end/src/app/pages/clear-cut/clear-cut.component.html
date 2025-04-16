@@ -20,10 +20,10 @@
 
       <div class="debunks-grid">
         @for (debunk of debunks(); track debunk['_id']) {
-          <div class="debunk-card fade-in">
-            <div class="debunk-header">
-              <h2>{{ debunk.title }}</h2>
-              <span class="debunk-date">{{ debunk.date | date:'mediumDate' }}</span>
+          <div class="w-full mt-5 mb-5 mx-auto bg-gray-900/60 backdrop-blur-md text-white rounded-3xl shadow-xl p-6 border border-gray-800 transition hover:shadow-2xl hover:border-indigo-500 duration-300 overflow-hidden">
+            <div class="">
+              <h2 class="text-4xl">{{ debunk.title }}</h2>
+              <span class="text-1xl text-gray-500">{{ debunk.date | date:'mediumDate' }}</span>
             </div>
   
             <div class="debunk-content">

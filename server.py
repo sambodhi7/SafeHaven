@@ -38,7 +38,7 @@ def postFrontLine():
         audio = request.files['audio']
         audio.save(os.path.join("./static/audios", f"{id}.mp3"))
     print(frontline)
-    return "hello"
+    return {"success":True}
 
 @app.route("/api/debunks", methods=["POST"])
 @cross_origin()
@@ -49,6 +49,33 @@ def get_debunks():
         'success' : True,
         'debunks' : res
     }
+
+@app.route("/api/post/echo", methods=["POST"])
+@cross_origin()
+def post_echo():
+    echo={
+        "title" : request.form['title'],
+        "message":  request.form['message'],
+        "audioPresent" : request.form['audioPresent']=='true',
+        "author" : request.form['author']
+    }
+    echo_id = mongoManager.add_echo(echo)
+    if(echo['audioPresent']):
+        audio = request.files['audio']
+        audio.save(os.path.join("./static/audios", f"{echo_id}.mp3"))
+    return {
+        "success" : True
+    }
+
+@app.get("/api/get/echos")
+@cross_origin()
+def get_echos():
+    echos = mongoManager.get_echos()
+    for echo in echos:
+        if(echo['audioPresent']):
+            echo['audio'] = f"{request.url_root}/audio/{echo['_id']}"
+    print(echos)
+    return echos
 
 @app.get("/api/get/frontlines")
 @cross_origin()
@@ -90,6 +117,25 @@ def get_image(imageid):
 @cross_origin()
 def get_audio(audioId):
     return send_from_directory (directory="./static/audios", path=f"{audioId}.mp3")
+
+@app.route("/api/post/voice", methods=["POST"])
+@cross_origin()
+def post_voice():
+    voice  = {
+        'title' : request.form['title'],
+        'content':request.form['content'],
+        'author' : request.form['author']
+    }
+    mongoManager.add_voice(voice)
+    return {
+        'success':True
+    }
+
+@app.get("/api/get/voices")
+@cross_origin()
+def get_voices():
+    voices = mongoManager.get_voices()
+    return voices
 
 
 app.run(

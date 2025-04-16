@@ -8,7 +8,7 @@ import { AddFrontLineLensFormComponent } from "../../components/add-front-line-l
 
 @Component({
   selector: 'app-frontline-lens',
-  imports: [NgxFlickeringGridComponent, GooglemapComponent, AddEchoComponent, AddFrontLineLensFormComponent],
+  imports: [NgxFlickeringGridComponent, GooglemapComponent, AddFrontLineLensFormComponent],
   templateUrl: './frontline-lens.component.html',
   styleUrl: './frontline-lens.component.css'
 })

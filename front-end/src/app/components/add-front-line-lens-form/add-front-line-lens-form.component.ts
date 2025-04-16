@@ -104,7 +104,7 @@ export class AddFrontLineLensFormComponent {
       console.log(this.audioBlob())
       fetch("http://127.0.0.1:5000/api/post/front-line-lens", {method:'POST',
         body: formdata
-      })
+      }).then(res=>location.reload())
       
     }
     else{

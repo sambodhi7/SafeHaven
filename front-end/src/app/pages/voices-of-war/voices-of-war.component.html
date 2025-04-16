@@ -1,1 +1,89 @@
-<p>voices-of-war works!</p>
+
+
+<div class="h-80 w-full">
+    <om-ripple
+        [rippleBorderColor]="'rgba(255, 255, 255, 0.7)'"
+        [rippleColor]="'rgba(174, 174, 174, 0.54)'"
+        styleClass="custom-ripple"
+
+    >   
+
+        <div class="flex h-full w-full justify-center items-center">
+            <h1 class="text-7xl text-center">Voices of War</h1>
+        </div>
+
+    </om-ripple>
+</div>
+<div class="container w-full justify-center items-center align-middle ">
+    
+@for (echo of voices(); track echo['_id']) {
+    <div class="max-w-md mt-5 mb-5 mx-auto bg-gray-900/60 backdrop-blur-md text-white rounded-3xl shadow-xl p-6 border border-gray-800 transition hover:shadow-2xl hover:border-indigo-500 duration-300 overflow-hidden">
+      <div class="mb-5">
+        <h2 class="text-3xl font-extrabold tracking-tight text-white">{{echo['title']}}</h2>
+        <p class="text-indigo-400 mt-1 text-sm uppercase tracking-wider">By {{echo['author']}}</p>
+        <p class="text-indigo-400 mt-1 text-sm uppercase tracking-wider">On {{echo['postedOn']}}</p>
+        
+        
+      </div>
+      <p class="text-gray-300 leading-relaxed text-sm">
+        {{echo['content']}}
+      </p>
+      
+    
+    </div>
+}
+
+   
+    <button class="fab" (click)="openModal()">
+        <span class="fab-icon">+</span>
+        <span class="fab-text">Share Your Legacy</span>
+
+      </button>
+
+    @if (showModal()) {
+        <div class="modal-overlay" (click)="closeModal()">
+          <div class="modal-content" (click)="$event.stopPropagation()">
+            <button class="modal-close" (click)="closeModal()">&times;</button>
+    
+            <h1 class="modal-title text-5xl">Share Your Legacy</h1>
+            <p class="ml-8 m-2">We will immortalize your words, let the world know your story and your life</p>
+    
+            <form class="debunk-form" [formGroup]="form" >
+              <div class="form-group">
+                <label>Title *</label>
+                <input type="text" name="title" formControlName="title" required>
+              </div>
+
+              <div class="form-group">
+                <label>By (type Anonymous if you dont wanna reveal)</label>
+                <input type="text" name="author" formControlName="author" required>
+              </div>
+              
+              <div class="form-group">
+                <label>Your Message</label>
+                <textarea name="correctInfo" formControlName="content" required></textarea>
+              </div>
+              
+             
+
+              <div class="form-actions">
+                <button type="button" class="cancel-btn" (click)="closeModal()">Cancel</button>
+                <button type="submit" class="submit-btn" (click)="submit()">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      }
+       
+</div>
+
+
+
+
+
+
+
+
+ 
+
+ 

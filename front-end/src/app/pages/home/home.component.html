@@ -1,13 +1,36 @@
 <om-aurora>
+    <div class="flex flex-col justify-center items-center ">
+        <om-globe styleClass="flex" [globeSize]="300"></om-globe>
+    </div>
+    
     <div class="flex felx-column justify-center items-center h-50">
+       
         <h1 class="text-7xl mb-2" >SafeHaven</h1>
     </div>
-    <div class="w-full mt-0 flex justify-center items-center"><om-typewriter 
+    
+
+    <div class="w-full mt-0 flex justify-center items-center mb-50"><om-typewriter 
         [words]="['Remembering the lost. Empowering survivors.']" 
         [writeDelay]="100" 
-        [writeSpeed]="200"
+        [writeSpeed]="50"
         [disableLoop]="true"
-        styleClass="text-4xl  text-center"
+        styleClass="text-5xl  text-center"
     ></om-typewriter></div>
-    
+  
 </om-aurora>
+
+<div class="timeline-wrapper">
+    <h2 class="text-5xl">
+     Major Wars in Recent years and their effects
+     
+    </h2>
+
+    <om-timeline
+      [data]="conflictDetails"
+      [entryGap]="'1rem'"
+      [titleMaxWidth]="'15rem'"
+      [orientation]="'switch'"
+    ></om-timeline>
+  </div>
+
+  
